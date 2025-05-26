@@ -8,8 +8,9 @@ public class Luckyinteger {
         System.out.println(" Введите четырёхзначное число ! ");
         String myint = scanner.nextLine() ;
 
-        if (myint.length() !=4 ){
+        if (myint.length() !=4  ){
             System.out.println("Вы ввели не правильно . Нужно четырёхзначное число !");
+
 
         }else {
             int leftsum = Character.getNumericValue(myint.charAt(0)) + Character.getNumericValue(myint.charAt(1)) ;

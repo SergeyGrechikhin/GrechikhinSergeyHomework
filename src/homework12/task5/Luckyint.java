@@ -9,7 +9,7 @@ public class Luckyint {
         String myint = scanner.nextLine() ;
 
         if (myint.length() !=4 ){
-            System.out.println("Вы ввели не правильно . Нужно четырёхзначное число !");
+            System.out.println("Вы ввели не правильно . Нужно четырёхзначное целое число !");
         }else{
             int mychar = myint.charAt(0) - '0' ;
             int mychar1 = myint.charAt(1) - '0' ;
