@@ -13,10 +13,11 @@ public class SimpleCount {
 
             if (n % i == 0) {
                 count++;
+                System.out.println( count );
             }
         }
         if (n <= 1) {
-            System.out.println("Число не простое");
+            System.out.println("Число отрицательное или ноль");
         } else if (count == 0) {
             System.out.println("Число простое");
         } else {
@@ -28,3 +29,15 @@ public class SimpleCount {
         }
 
 
+
+
+
+
+
+
+
+
+
+
+        /* *) Проверить является ли число которое ввел пользователь - простым
+         (Простое число - число, которое делится без остатка только на 1 и на себя) */
