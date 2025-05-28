@@ -5,12 +5,11 @@ import java.util.Scanner;
 
 public class ProductDemo {
     public static void main(String[] args) {
-        System.out.println(" На уроке '12'  было дано задание ");
-        System.out.println("4.\n" +
-                "Создайте класс продукт (наименование, цена, количество)\n" +
+        System.out.println(" На уроке '12'  было дано задание .");
+        System.out.println("C учетом новых знаний переделал это код /Какой был код до этого можно увидеть в infofortask3 . ");
+        System.out.println("Создайте класс продукт (наименование, цена, количество)\n" +
                 "Запросите у пользователя данные для создания трех экземпляров этого класса.\n" +
                 "В момент создания нового продукта проверьте - есть ли уже продукт с таким названием?\n");
-        System.out.println("C учетом новых знаний переделал это код /Какой был код до этого можно увидеть в infofortask3 ");
         Scanner scanner = new Scanner(System.in) ;
 
         System.out.println("Введите сколько товаров вы хотите создать");
