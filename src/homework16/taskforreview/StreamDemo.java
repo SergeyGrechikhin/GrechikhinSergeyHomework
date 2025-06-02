@@ -1,4 +1,4 @@
-package homework16.forcontrol;
+package homework16.taskforreview;
 
 public class StreamDemo {
     public static void main(String[] args) {

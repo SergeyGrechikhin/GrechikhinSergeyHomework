@@ -1,4 +1,4 @@
-package homework16.forthefuture;
+package homework16.experiments;
 
 public class StudentDemoApp {
     public static void main(String[] args) {
