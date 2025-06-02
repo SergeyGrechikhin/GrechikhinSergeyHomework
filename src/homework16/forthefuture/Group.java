@@ -1,0 +1,20 @@
+package homework16.forthefuture;
+
+public class Group {
+    private String groupname ;
+
+    public Group(String groupname) {
+        this.groupname = groupname;
+    }
+
+    public String getGroupname() {
+        return groupname;
+    }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "groupname='" + groupname + '\'' +
+                '}';
+    }
+}

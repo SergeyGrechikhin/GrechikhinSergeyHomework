@@ -1,0 +1,12 @@
+package homework16.forthefuture;
+
+public class StudentDemoApp {
+    public static void main(String[] args) {
+        GroupService groupService = new GroupService();
+        Group[] groups = groupService.createArrayGroup();
+        StudentService studentService = new StudentService() ;
+        Student[] student = studentService.createArrayStudent() ;
+        Institute institute = new Institute(groups,student);
+        System.out.println(institute);
+    }
+}
