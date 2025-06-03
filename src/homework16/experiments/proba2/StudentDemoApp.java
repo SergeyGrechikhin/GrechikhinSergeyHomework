@@ -1,4 +1,4 @@
-package homework16.experiments;
+package homework16.experiments.proba2;
 
 public class StudentDemoApp {
     public static void main(String[] args) {
