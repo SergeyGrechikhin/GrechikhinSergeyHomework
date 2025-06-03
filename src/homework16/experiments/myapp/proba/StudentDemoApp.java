@@ -14,20 +14,20 @@ public class StudentDemoApp {
             System.out.println("3. Показать все группы");
             System.out.println("0. Выход из программы");
 
-            int mychoice = scanner.nextInt();
-            scanner.nextLine();
+            String mychoice = scanner.nextLine();
+
 
             switch (mychoice)  {
-                case 1 :
+                case "1" :
                     manager.createGroups();
                     break ;
-                case 2 :
+                case "2" :
                     manager.createAndAddStudent();
                     break;
-                case 3 :
+                case "3" :
                     manager.printInfo();
                     break;
-                case 0 :
+                case "0" :
                     System.out.println("Завершение программы");
                     return;
 
