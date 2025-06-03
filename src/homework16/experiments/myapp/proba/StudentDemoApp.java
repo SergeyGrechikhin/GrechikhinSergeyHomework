@@ -10,7 +10,7 @@ public class StudentDemoApp {
         while(true) {
             System.out.println(" \n===*Меню*=== ");
             System.out.println("1. Добавить в базу данных группу/группы");
-            System.out.println("2. Добавить базу данных 1 студента/студентов и распределить в группу");
+            System.out.println("2. Добавить базу данных студента/студентов и распределить в группу");
             System.out.println("3. Показать все группы");
             System.out.println("0. Выход из программы");
 
