@@ -1,14 +1,14 @@
 package homework16.experiments.myapp.proba;
 
 import java.util.Scanner;
+import homework16.experiments.myapp.proba.StudentDataBase;
 
 public class GroupManager {
     private Group[] groups = new Group[100] ;
     private int myGroupCounter = 0 ;
     private Student[] students = new Student[1000];
     private int myStudentCounter = 0 ;
-   /* private int groupCounter ;
-    private int studentCounter; */
+
 
     Scanner scanner = new Scanner(System.in) ;
     public void createGroups() {
@@ -32,7 +32,7 @@ public class GroupManager {
             }
             if (isGroupNameValid) {
                 System.out.println("Такая группа уже существует");
-                continue;
+                break;
             }
             groups[myGroupCounter] = new Group(namegroup) ;
             myGroupCounter++ ;
@@ -62,7 +62,7 @@ public class GroupManager {
             }
             if (isIdValid)  {
                 System.out.println("Такой id существует!");
-                continue;
+                break;
             }
 
                 System.out.println("Введите имя студента");
@@ -77,29 +77,7 @@ public class GroupManager {
              a++;
 
 
-                System.out.println("Введите название группы, куда хотите отправить этого студента / В группе может быть только 100 человек");
-            System.out.println("Доступные группы");
-            for (int i = 0; i < myStudentCounter; i++) {
-                if (groups[i] !=null){
-                    System.out.println(" - " + groups[i].getGroupname());
-                }
 
-            }
-                String invitegroup = scanner.nextLine() ;
-
-                boolean foundname = false ;
-                for (int j = 0; j < groups.length ; j++) {
-                    if (groups[j] !=null && groups[j].getGroupname().equalsIgnoreCase(invitegroup)) {
-                        groups[j].addStudent(student);
-                        System.out.println("Студент добавлен в группу " + invitegroup);
-                        foundname = true ;
-                        break;
-                    }
-                }
-                if (!foundname) {
-                    System.out.println("Группа не найдена !");
-                    a--;
-                }
 
             }
         }
@@ -127,7 +105,78 @@ public class GroupManager {
             }
         }
     }
+    public void addStudenttoGroup()  {
+        System.out.println("Cписок Студентов");
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null) {
+                System.out.println(" ID " + students[i].getId() + " |Имя : " + students[i].getName() + " " + students[i].getSurname());
+            }
+        }
+        System.out.println("Введите ID Студента , которого хотите добавить в группу :");
+        String studentID = scanner.nextLine();
+        Student inviteStudent = null;
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null && students[i].getId().equalsIgnoreCase(studentID)) {
+                inviteStudent = students[i];
+                break;
+            }
+        }
+        if (inviteStudent == null) {
+            System.out.println("Студент с таким ID не найден");
+            return;
+        }
+        System.out.println("Список групп");
+        for (int i = 0; i < groups.length; i++) {
+            if (groups[i] != null) {
+                System.out.println(" - " + groups[i].getGroupname());
+            }
+        }
+        System.out.println("Введите название группы , куда хотите добавить студента :");
+        String groupname = scanner.nextLine();
+        boolean foundgroup = false;
+        for (int i = 0; i < groups.length; i++) {
+            if (groups[i] != null && groups[i].getGroupname().equalsIgnoreCase(groupname)) {
+                groups[i].addStudent(inviteStudent);
+                System.out.println("Студент добавлен в группу" + groupname);
+                foundgroup = true;
+                break;
+            }
+        }
+        if (!foundgroup) {
+            System.out.println("Группа не найдена");
+        }
     }
+    }
+
+
+
+    /*
+
+    System.out.println("Введите название группы, куда хотите отправить этого студента / В группе может быть только 100 человек");
+            System.out.println("Доступные группы");
+            for (int i = 0; i < myStudentCounter; i++) {
+                if (groups[i] !=null){
+                    System.out.println(" - " + groups[i].getGroupname());
+                }
+
+            }
+                String invitegroup = scanner.nextLine() ;
+
+                boolean foundname = false ;
+                for (int j = 0; j < groups.length ; j++) {
+                    if (groups[j] !=null && groups[j].getGroupname().equalsIgnoreCase(invitegroup)) {
+                        groups[j].addStudent(student);
+                        System.out.println("Студент добавлен в группу " + invitegroup);
+
+                        foundname = true ;
+                        break;
+                    }
+                }
+                if (!foundname) {
+                    System.out.println("Группа не найдена !");
+                    a--;
+                }
+     */
 
 
 

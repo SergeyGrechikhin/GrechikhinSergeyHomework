@@ -10,8 +10,9 @@ public class StudentDemoApp {
         while(true) {
             System.out.println(" \n===*Меню*=== ");
             System.out.println("1. Добавить в базу данных группу/группы");
-            System.out.println("2. Добавить базу данных студента/студентов и распределить в группу");
-            System.out.println("3. Показать все группы");
+            System.out.println("2. Добавить базу данных студента/студентов ");
+            System.out.println("3. Добавить студента в группу");
+            System.out.println("4. Показать все группы");
             System.out.println("0. Выход из программы");
 
             String mychoice = scanner.nextLine();
@@ -24,8 +25,11 @@ public class StudentDemoApp {
                 case "2" :
                     manager.createAndAddStudent();
                     break;
-                case "3" :
+                case "4" :
                     manager.printInfo();
+                    break;
+                case "3" :
+                    manager.addStudenttoGroup();
                     break;
                 case "0" :
                     System.out.println("Завершение программы");
