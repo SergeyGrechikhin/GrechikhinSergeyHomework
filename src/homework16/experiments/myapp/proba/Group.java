@@ -31,4 +31,24 @@ public class Group {
     public Student[] getStudents() {
         return students;
     }
+
+    public void removeStudent(Student student) {
+        if (student == null) {
+            System.out.println("Ошибка.");
+            return;
+        }
+        for (int i = 0; i < studentCount; i++) {
+            if (students[i] != null && students[i].getId().equalsIgnoreCase(student.getId())) {
+               Student myremoveStudent = students[i];
+                for (int j = i; j < studentCount -1 ; j++) {
+                    students[j] = students[j+1];
+                }
+                students[studentCount - 1] = null;
+                studentCount--;
+                System.out.println("Студент " + myremoveStudent.getName() + " " + myremoveStudent.getSurname() + " удален из группы " + groupname);
+                return;
+            }
+        }
+
+    }
 }

@@ -158,8 +158,46 @@ public class GroupManager {
             }
         }
 
+        public void MovetoGroup() {
+           printInfo();
+            System.out.println("Введите ID студента которого хотите переместить");
+            String idformove = scanner.nextLine();
+            Student moveStudent = null;
+            for (int i = 0; i < myStudentCounter; i++) {
+                if (students[i] != null && students[i].getId().equalsIgnoreCase(idformove)) {
+                    moveStudent = students[i];
+                    break;
+                }
+            }
+            if (moveStudent == null) {
+                System.out.println("Id не найден ");
+                return;
+            }
+            for (int i = 0; i < myGroupCounter; i++) {
+                groups[i].removeStudent(moveStudent);
+            }
+            System.out.println(" Список групп : ");
+            for (int i = 0; i < groups.length; i++) {
+                if (groups[i] != null) {
+                    System.out.println(" - " + groups[i].getGroupname());
+                }
+            }
+            System.out.println("Введите название группы куда хотите переместить студента");
+            String movegroupname = scanner.nextLine().trim();
+            for (int i = 0; i < myGroupCounter; i++) {
+                if (groups[i].getGroupname().equalsIgnoreCase(movegroupname)) {
+                    groups[i].addStudent(moveStudent);
+                    System.out.println("Студент c ID " + moveStudent.getId() + " перемещен в группу " + groups[i].getGroupname() );
+                    return;
+                }
+            }
+            System.out.println("Группа не найдена");
+        }
 
-    }
+        }
+
+
+
 
 
 
