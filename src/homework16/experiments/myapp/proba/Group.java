@@ -2,7 +2,7 @@ package homework16.experiments.myapp.proba;
 
 public class Group {
     private String groupname;
-    private Student[] students = new Student[100] ;
+    private Student[] students = new Student[10] ;
     private int studentCount = 0;
 
     public int getStudentCount() {
@@ -17,12 +17,14 @@ public class Group {
         return groupname;
     }
 
-    public void addStudent(Student student) {
+    public boolean addStudent(Student student) {
         if (studentCount < students.length) {
             students[studentCount] = student;
             studentCount++;
+            return true ;
         } else {
-            System.out.println("Группа заполнена");
+
+            return false;
         }
     }
 

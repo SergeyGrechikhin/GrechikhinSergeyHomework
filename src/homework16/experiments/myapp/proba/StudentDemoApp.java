@@ -23,7 +23,7 @@ public class StudentDemoApp {
                     manager.createGroups();
                     break ;
                 case "2" :
-                    manager.createAndAddStudent();
+                    manager.createStudent();
                     break;
                 case "4" :
                     manager.printInfo();
