@@ -150,33 +150,6 @@ public class GroupManager {
 
 
 
-    /*
-
-    System.out.println("Введите название группы, куда хотите отправить этого студента / В группе может быть только 100 человек");
-            System.out.println("Доступные группы");
-            for (int i = 0; i < myStudentCounter; i++) {
-                if (groups[i] !=null){
-                    System.out.println(" - " + groups[i].getGroupname());
-                }
-
-            }
-                String invitegroup = scanner.nextLine() ;
-
-                boolean foundname = false ;
-                for (int j = 0; j < groups.length ; j++) {
-                    if (groups[j] !=null && groups[j].getGroupname().equalsIgnoreCase(invitegroup)) {
-                        groups[j].addStudent(student);
-                        System.out.println("Студент добавлен в группу " + invitegroup);
-
-                        foundname = true ;
-                        break;
-                    }
-                }
-                if (!foundname) {
-                    System.out.println("Группа не найдена !");
-                    a--;
-                }
-     */
 
 
 
