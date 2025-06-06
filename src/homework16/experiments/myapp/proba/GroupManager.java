@@ -159,6 +159,10 @@ public class GroupManager {
         }
 
         public void MovetoGroup() {
+            if (myStudentCounter == 0 && myGroupCounter == 0) {
+                System.out.println("Студенты или Группы  еще не созданы");
+                return;
+            }
            printInfo();
             System.out.println("Введите ID студента которого хотите переместить");
             String idformove = scanner.nextLine();
