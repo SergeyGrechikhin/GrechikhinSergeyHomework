@@ -1,0 +1,33 @@
+package homework19.service;
+
+import homework19.entity.Book;
+import homework19.repository.BookRepository;
+
+public class BookService {
+    private BookRepository bookRepository ;
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+     public Book[] addBook(int id, String namebook, String author) {
+        if (bookRepository.findById(id) != null) {
+            System.out.println("Книга с таким ID уже существует!");
+            return null;
+        }
+        Book book = new Book(namebook,id,author);
+        bookRepository.save(book);
+         return new Book[]{book};
+     }
+     public Book findBookById(int id) {
+        return bookRepository.findById(id);
+     }
+     public Book[] getAllBooks() {
+        if (bookRepository.getBookcounter() == 0) {
+            return new Book[0];
+        }
+         return bookRepository.findAllBooks();
+        }
+
+     }
+
+
