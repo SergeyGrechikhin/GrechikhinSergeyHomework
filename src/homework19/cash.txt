@@ -1,0 +1,61 @@
+ /*  public Book findByAuthor(String author) {
+        for (int i = 0; i < booksCounter; i++) {
+            if (books[i].getAuthor().equals(author)) {
+                return books[i];
+            }
+        }
+        return null;
+    } */
+
+
+/*  public Book findBookbyAuthor(String author) {
+        return bookRepository.findByAuthor(author);
+        } */
+/*
+    метод находит только одну книгу , одного автора , даже если книг с таким автором больше
+    private void printInfoforFindtoAuthor(){
+        System.out.println("Введите автора книги которую хотите найти");
+        String author = input.nextLine();
+        Book foundAuthorBook = bookService.findBookbyAuthor(author);
+        if(foundAuthorBook != null){
+            System.out.println("Книга автором которой является " + author +  " " + foundAuthorBook );
+        } else   {
+            System.out.println("Книга автором которой является " + author + " не найдена ");
+        }
+    } */
+
+    Тоже самое с названием
+
+    /* private void printInfoforFindtoName(){
+            System.out.println("Введите название Книги которую хотите найти");
+            String name = input.nextLine();
+            Book foundNameBook = bookService.findBookbyName(name) ;
+            if(foundNameBook != null){
+                System.out.println("Книги с таким названием : " + foundNameBook);
+            } else   {
+                System.out.println("Книги с таким названием не найдены");
+            }
+        } */
+
+      /* public Book findBookbyName(String namebook) {
+              return bookRepository.findByName(namebook);
+              } */
+
+
+              /* public Book findByName(String namebook ) {
+                      for (int i = 0; i < booksCounter; i++) {
+                          if (books[i].getNamebook().equals(namebook)) {
+                              return books[i];
+                          }
+                      }
+                      return null;
+                  } */
+
+
+
+
+
+                  Также допускаю что могут быть одинаковые название исходя из данного примера :
+                  М.Горький "Детство", Л.Н.Толстой "Детство";
+
+

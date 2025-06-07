@@ -38,22 +38,48 @@ public class BookRepository {
       return Arrays.copyOf(books,booksCounter);
     }
 
-    public Book findByName(String namebook ) {
+
+
+    public Book[] findBooksByName(String name) {
+        int booksCounterfindBooksbyName = 0;
         for (int i = 0; i < booksCounter; i++) {
-            if (books[i].getNamebook().equals(namebook)) {
-                return books[i];
+            if (books[i].getNamebook().equalsIgnoreCase(name)) {
+                booksCounterfindBooksbyName++;
             }
         }
-        return null;
+        if (booksCounterfindBooksbyName == 0) {
+            return new Book[0] ;
+        }
+        Book[] result = new Book[booksCounterfindBooksbyName];
+        int index = 0;
+        for (int i = 0; i < booksCounter; i++) {
+            if (books[i].getNamebook().equalsIgnoreCase(name)) {
+                result[index++] = books[i];
+            }
+        }
+        return result;
     }
 
-    public Book findByAuthor(String author) {
+
+
+    public Book[] findBooksByAuthor(String author) {
+        int booksCounterfindBooksByAuthor = 0 ;
         for (int i = 0; i < booksCounter; i++) {
-            if (books[i].getAuthor().equals(author)) {
-                return books[i];
+            if (books[i].getAuthor().equalsIgnoreCase(author)) {
+                booksCounterfindBooksByAuthor++;
             }
         }
-        return null;
+        if (booksCounterfindBooksByAuthor == 0) {
+            return new Book[0];
+        }
+        Book[] result = new Book[booksCounterfindBooksByAuthor];
+        int index = 0;
+        for (int i = 0; i < booksCounter; i++) {
+            if (books[i].getAuthor().equalsIgnoreCase(author)) {
+                result[index++] = books[i];
+            }
+        }
+        return result;
     }
 
 

@@ -63,25 +63,36 @@ public class UI {
         }
     }
 
-    private void printInfoforFindtoName(){
-        System.out.println("Введите название Книги которую хотите найти");
-        String name = input.nextLine();
-        Book foundNameBook = bookService.findBookbyName(name) ;
-        if(foundNameBook != null){
-            System.out.println("Книги с таким названием : " + foundNameBook);
-        } else   {
-            System.out.println("Книги с таким названием не найдены");
+
+
+
+
+    private void printInfoforFindbyAuthorBooks(){
+        System.out.println("Введите автора книги которую хотите найти");
+        String author = input.nextLine();
+        Book[] foundAuthorBook = bookService.findAllBooksByAuthor(author);
+        if(foundAuthorBook.length == 0){
+            System.out.println("Книги автора " +  author  + " не найдены");
+        } else {
+            System.out.println("Книги автора " +  author  +  " : " );
+            for (int i = 0; i < foundAuthorBook.length ; i++) {
+                System.out.println(" - " + foundAuthorBook[i]);
+            }
         }
     }
 
-    private void printInfoforFindtoAuthor(){
-        System.out.println("Введите автора книги которую хотите найти");
-        String author = input.nextLine();
-        Book foundAuthorBook = bookService.findBookbyAuthor(author);
-        if(foundAuthorBook != null){
-            System.out.println("Книга автором которой является " + author +  " " + foundAuthorBook );
-        } else   {
-            System.out.println("Книга автором которой является " + author + " не найдена ");
+    private void printInfoforFindbyNameBooks(){
+        System.out.println("Введите название книги которую хотите найти");
+        String booksname = input.nextLine();
+        Book[] foundNameBook = bookService.findAllBooksByName(booksname);
+        if(foundNameBook.length == 0){
+            System.out.println("Книги c названием " +  booksname  + " не найдены");
+        } else {
+            System.out.println("Книги с названием " +
+                    " " +  booksname  +  " : " );
+            for (int i = 0; i < foundNameBook.length ; i++) {
+                System.out.println(" - " + foundNameBook[i]);
+            }
         }
     }
 
@@ -113,10 +124,10 @@ public class UI {
                                         printInfoforFindtoId();
                                         break;
                                     case "2":
-                                        printInfoforFindtoAuthor();
+                                        printInfoforFindbyAuthorBooks();
                                         break;
                                     case "3":
-                                        printInfoforFindtoName();
+                                        printInfoforFindbyNameBooks();
                                         break;
                                     case "0":
                                         System.out.println("Возврат в главное меню");

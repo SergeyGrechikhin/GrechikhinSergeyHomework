@@ -27,12 +27,15 @@ public class BookService {
         }
          return bookRepository.findAllBooks();
         }
-        public Book findBookbyName(String namebook) {
-        return bookRepository.findByName(namebook);
+
+
+
+        public Book[] findAllBooksByAuthor(String author) {
+        return bookRepository.findBooksByAuthor(author);
         }
 
-        public Book findBookbyAuthor(String author) {
-        return bookRepository.findByAuthor(author);
+        public Book[] findAllBooksByName(String namebook) {
+        return bookRepository.findBooksByName(namebook);
         }
 
      }
