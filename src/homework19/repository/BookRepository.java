@@ -38,5 +38,23 @@ public class BookRepository {
       return Arrays.copyOf(books,booksCounter);
     }
 
+    public Book findByName(String namebook ) {
+        for (int i = 0; i < booksCounter; i++) {
+            if (books[i].getNamebook().equals(namebook)) {
+                return books[i];
+            }
+        }
+        return null;
+    }
+
+    public Book findByAuthor(String author) {
+        for (int i = 0; i < booksCounter; i++) {
+            if (books[i].getAuthor().equals(author)) {
+                return books[i];
+            }
+        }
+        return null;
+    }
+
 
 }

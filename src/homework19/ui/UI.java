@@ -55,18 +55,42 @@ public class UI {
         System.out.println("Введите ID по которому хотите найти книга");
         int id = input.nextInt();
         input.nextLine();
-        Book foundBook = bookService.findBookById(id);
-        if(foundBook != null){
-            System.out.println("Ваша Книга " + foundBook);
+        Book foundIdBook = bookService.findBookById(id);
+        if(foundIdBook != null){
+            System.out.println("Ваша Книга " + foundIdBook);
         } else   {
             System.out.println("Ваша книга не найдена");
         }
     }
+
+    private void printInfoforFindtoName(){
+        System.out.println("Введите название Книги которую хотите найти");
+        String name = input.nextLine();
+        Book foundNameBook = bookService.findBookbyName(name) ;
+        if(foundNameBook != null){
+            System.out.println("Книги с таким названием : " + foundNameBook);
+        } else   {
+            System.out.println("Книги с таким названием не найдены");
+        }
+    }
+
+    private void printInfoforFindtoAuthor(){
+        System.out.println("Введите автора книги которую хотите найти");
+        String author = input.nextLine();
+        Book foundAuthorBook = bookService.findBookbyAuthor(author);
+        if(foundAuthorBook != null){
+            System.out.println("Книга автором которой является " + author +  " " + foundAuthorBook );
+        } else   {
+            System.out.println("Книга автором которой является " + author + " не найдена ");
+        }
+    }
+
+
     public void userMenu(){
         while(true){
             System.out.println(" ===*Menu*=== ");
             System.out.println("1. Добавить книгу/книги в библиотеку.");
-            System.out.println("2. Найти книгу в библиотеке по ID.");
+            System.out.println("2. Найти книгу в библиотеке ");
             System.out.println("3. Вывести все книги в библиотеке.");
             System.out.println("0. Выйти из программы.");
 
@@ -75,9 +99,38 @@ public class UI {
                 case "1":
                     createCounterBook();
                     break;
+
                     case "2":
-                        printInfoforFindtoId();
-                        break;
+                        while (true) {
+                                System.out.println("\n===*Поиск Книг*===");
+                                System.out.println("1. Найти книгу по ID");
+                                System.out.println("2. Найти книгу по автору");
+                                System.out.println("3. Найти книгу по названию");
+                                System.out.println("0. Вернуться в основное меню");
+                                String userСhoiceExtra = input.nextLine();
+                                switch (userСhoiceExtra) {
+                                    case "1":
+                                        printInfoforFindtoId();
+                                        break;
+                                    case "2":
+                                        printInfoforFindtoAuthor();
+                                        break;
+                                    case "3":
+                                        printInfoforFindtoName();
+                                        break;
+                                    case "0":
+                                        System.out.println("Возврат в главное меню");
+                                        break;
+                                    default:
+                                        System.out.println("Вы сделали что не так !");
+                                }
+                                if (userСhoiceExtra.equals("0")) {
+                                    break;
+                                }
+                            }
+                            break;
+
+
                         case "3":
                             printInfoAll();
                             break;

@@ -27,6 +27,13 @@ public class BookService {
         }
          return bookRepository.findAllBooks();
         }
+        public Book findBookbyName(String namebook) {
+        return bookRepository.findByName(namebook);
+        }
+
+        public Book findBookbyAuthor(String author) {
+        return bookRepository.findByAuthor(author);
+        }
 
      }
 
