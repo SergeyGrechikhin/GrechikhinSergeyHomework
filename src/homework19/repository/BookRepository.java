@@ -11,10 +11,14 @@ public class BookRepository {
 
 
 
+
     public BookRepository() {
      this.books = new Book[LibraryConfiguration.MAXBOOK];
      this.booksCounter = 0 ;
+
  }
+
+
 
     public int getBookcounter() {
         return booksCounter;
@@ -81,6 +85,9 @@ public class BookRepository {
         }
         return result;
     }
+
+
+
 
 
 }

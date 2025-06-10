@@ -1,5 +1,6 @@
 package homework19.ui;
 
+import homework16.experiments.myapp.proba.Student;
 import homework19.entity.Book;
 import homework19.service.BookService;
 
@@ -38,19 +39,7 @@ public class UI {
         }
 
     }
-    private void printInfoAll(){
-        Book[] books = bookService.getAllBooks();
-        if(books.length == 0){
-            System.out.println("Библиотека пустая");
 
-        }else {
-            System.out.println("Книги в библиотеке : ");
-            for (int i = 0; i < books.length; i++) {
-                System.out.println(books[i]);
-            }
-        }
-
-    }
     private void printInfoforFindtoId(){
         System.out.println("Введите ID по которому хотите найти книга");
         int id = input.nextInt();
@@ -93,6 +82,20 @@ public class UI {
             for (int i = 0; i < foundNameBook.length ; i++) {
                 System.out.println(" - " + foundNameBook[i]);
             }
+        }
+    }
+    public void printInfo() {
+        Book[] books = bookService.getAllBooks();
+        if ( books.length == 0) {
+            System.out.println("Книги ещё не добавлены в катaлог");
+            return;
+        }
+        System.out.println(" Информация : ") ;
+        for (int i = 0; i < books.length ; i++) {
+            if (books[i] == null) {
+                return;
+            }
+            System.out.println( " \n---- " + "\nНазвание книги : " + books[i].getNamebook() + "  " + "\nИмя Автора : " + books[i].getAuthor() + "\nID : " + books[i].getId());
         }
     }
 
@@ -143,7 +146,7 @@ public class UI {
 
 
                         case "3":
-                            printInfoAll();
+                            printInfo();
                             break;
                             case "0":
                                 System.out.println("Выход из программы");
