@@ -1,5 +1,6 @@
 package homework22.ui;
 
+import homework22.ShopConfiguration;
 import homework22.entity.Product;
 import homework22.service.ProductService;
 
@@ -12,12 +13,14 @@ public class UI {
     public UI(ProductService productService) {
         this.productService = productService;
     }
+
     public void createProduct() {
         System.out.println("Enter how many cars you want to add to the database");
         int productscounter = input.nextInt();
         input.nextLine();
-        int count = productService.getRepository().getProductsCounter();
-        int maxcount = productService.getRepository().getMaxCapacity();
+        int count = productService.getProductsCounter();
+     //   int maxcount = productService.getRepository().getMaxCapacity();
+        int maxcount = ShopConfiguration.MAXPRODUCT;
         int freecount = maxcount - count;
 
         if (productscounter >freecount) {
@@ -25,8 +28,8 @@ public class UI {
             System.out.println("Max Slots : " + freecount);
         }else {
             for (int i = 0; i < productscounter; i++) {
-                count = productService.getRepository().getProductsCounter();
-                maxcount = productService.getRepository().getMaxCapacity();
+                count = productService.getProductsCounter();
+                maxcount = ShopConfiguration.MAXPRODUCT;
                 freecount = maxcount - count;
 
                 if (freecount <= 0) {
@@ -37,7 +40,7 @@ public class UI {
                 System.out.println("Enter product producer");
                 String producer = input.nextLine();
                 System.out.println("Enter product name");
-                String productname = input.nextLine();
+                String productName = input.nextLine();
                 System.out.println("Enter product ID/OnlyINT");
                 int id = input.nextInt();
                 input.nextLine();
@@ -46,8 +49,8 @@ public class UI {
                 input.nextLine();
 
 
-                Product[] savedproduct = productService.addCar(producer,price,id,productname);
-                if(savedproduct != null){
+                Product[] savedProduct = productService.addCar(producer,price,id,productName);
+                if(savedProduct != null){
                     System.out.println("Product added successfully" );
                 } else  {
                     System.out.println("Product not added successfully");

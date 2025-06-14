@@ -1,5 +1,5 @@
 package homework22;
 
 public class ShopConfiguration {
-    public static int MAXPRODUCT = 100;
+    public static final int MAXPRODUCT = 100;
 }

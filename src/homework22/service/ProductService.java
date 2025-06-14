@@ -46,8 +46,12 @@ public class ProductService {
         return productRepository.findProductsByProductNameandProducer(productName, producer);
     }
 
-    public ProductRepository getRepository() {
+  /*  public ProductRepository getRepository() {
         return productRepository;
+    }*/
+    public int getProductsCounter() {
+        return productRepository.getProductsCounter();
     }
+
 
 }

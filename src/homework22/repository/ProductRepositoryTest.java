@@ -48,6 +48,15 @@ class ProductRepositoryTest {
         assertEquals(found[0].getProductName(), p.getProductName());
     }
     @Test
+    void findByProductNameNull() {
+        Product p = new Product("Iphone" , 1000,2,null);
+        boolean saved =  productRepository.save(p);
+        assertTrue(saved);
+//        Product[] found = productRepository.findProductsByProductName("X5");
+//        assertNotNull(found);
+//        assertEquals(found[0].getProductName(), p.getProductName());
+    }
+    @Test
     void findByPrice() {
         Product p = new Product("Iphone" , 1000,2,"X5");
         boolean saved =  productRepository.save(p);
@@ -67,6 +76,14 @@ class ProductRepositoryTest {
         assertEquals(found[0].getProducer(), p.getProducer());
     }
 
+    @Test
+    void findProductsByProducer() {
+
     }
+
+    @Test
+    void findProductsByProductName() {
+    }
+}
 
 
