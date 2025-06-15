@@ -9,7 +9,7 @@ public class ProductService {
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-    public Product[] addCar(String producer, double price, int id, String productName) {
+    public Product[] addProduct(String producer, double price, int id, String productName) {
 
         if (productRepository.findById(id) != null) {
             System.out.println("Product with this ID already exists!");

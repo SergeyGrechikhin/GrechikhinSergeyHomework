@@ -49,7 +49,7 @@ public class UI {
                 input.nextLine();
 
 
-                Product[] savedProduct = productService.addCar(producer,price,id,productName);
+                Product[] savedProduct = productService.addProduct(producer,price,id,productName);
                 if(savedProduct != null){
                     System.out.println("Product added successfully" );
                 } else  {
