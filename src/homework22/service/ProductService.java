@@ -10,6 +10,10 @@ public class ProductService {
         this.productRepository = productRepository;
     }
     public Product[] addProduct(String producer, double price, int id, String productName) {
+        if (producer == null || producer.isBlank() || productName == null || productName.isBlank()) {
+            System.out.println("Product name or producer is null or blank");
+            return null;
+        }
 
         if (productRepository.findById(id) != null) {
             System.out.println("Product with this ID already exists!");

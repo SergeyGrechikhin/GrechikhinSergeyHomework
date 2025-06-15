@@ -23,7 +23,7 @@ public class ProductRepository {
     }
 
     public boolean save(Product product) {
-        if (productsCounter < products.length) {
+        if (productsCounter < products.length && products != null) {
             products[productsCounter++] = product;
             return true;
         }
