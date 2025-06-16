@@ -19,7 +19,6 @@ public class UI {
         int productscounter = input.nextInt();
         input.nextLine();
         int count = productService.getProductsCounter();
-     //   int maxcount = productService.getRepository().getMaxCapacity();
         int maxcount = ShopConfiguration.MAXPRODUCT;
         int freecount = maxcount - count;
 

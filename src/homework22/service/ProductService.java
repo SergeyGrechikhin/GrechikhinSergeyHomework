@@ -11,7 +11,7 @@ public class ProductService {
     }
     public Product[] addProduct(String producer, double price, int id, String productName) {
         if (producer == null || producer.isBlank() || productName == null || productName.isBlank()) {
-            System.out.println("Product name or producer is null or blank");
+            System.out.println("Product name or producer  is null or blank");
             return null;
         }
 
