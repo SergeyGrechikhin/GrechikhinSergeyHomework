@@ -73,6 +73,17 @@ public class UI {
         }
     }
 
+    private void printInfoforFindtoName(){
+        System.out.println("Enter the product name by which you want to find the product");
+        String name = input.nextLine();
+        Product foundNameProduct = productService.findProductByNameNew(name);
+        if(foundNameProduct != null){
+            System.out.println("Your Product " + foundNameProduct);
+        } else   {
+            System.out.println("Your Product not found");
+        }
+    }
+
 
 
 
@@ -91,7 +102,7 @@ public class UI {
         }
     }
 
-    private void printInfoforFindbyProductName(){
+ /*   private void printInfoforFindbyProductName(){  //Метод который ищет все имена если они одинакковые
         System.out.println("Enter the Product name by which you want to find the product");
         String productname = input.nextLine();
         Product[] foundproductname = productService.findAllProductsByProductName(productname);
@@ -104,7 +115,7 @@ public class UI {
                 System.out.println(" - " + foundproductname[i]);
             }
         }
-    }
+    }*/
     private void printInfoforFindbyProductNameandProducer(){
         System.out.println("Enter the Product name and Producer by which you want to find the product");
         System.out.println("Product name");
@@ -185,7 +196,7 @@ public class UI {
                                 printInfoforFindbyProductsProducer();
                                 break;
                             case "3":
-                                printInfoforFindbyProductName();
+                                printInfoforFindtoName();
                                 break;
                             case "4":
                                 findByPrice();

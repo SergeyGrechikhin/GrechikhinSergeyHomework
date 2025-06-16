@@ -19,8 +19,9 @@ public class ProductService {
             System.out.println("Product with this ID already exists!");
             return null;
         }
-        if (productRepository.findProductsByProductName(productName) != null) {
+        if (productRepository.findByName(productName) != null) {
             System.out.println("Product with this name already exists!");
+            return null;
         }
         Product product = new Product(producer, price, id, productName);
         productRepository.save(product);
@@ -29,11 +30,15 @@ public class ProductService {
     public Product findProductById(int id) {
         return productRepository.findById(id);
     }
+
+    public Product findProductByNameNew(String name) {
+        return productRepository.findByName(name);
+    }
     public Product[] getAllProducts() {
         if (productRepository.getProductsCounter() == 0) {
             return new Product[0];
         }
-        return productRepository.findAllCars();
+        return productRepository.findAllProducts();
     }
 
 
@@ -42,9 +47,9 @@ public class ProductService {
         return productRepository.findProductsByProducer(producer);
     }
 
-    public Product[] findAllProductsByProductName(String ProductName) {
+   /* public Product[] findAllProductsByProductName(String ProductName) {
         return productRepository.findProductsByProductName(ProductName);
-    }
+    } */
 
     public Product[] findProductsByPrice(double minPrice, double maxPrice) {
         return productRepository.findProductsByPrice(minPrice, maxPrice);

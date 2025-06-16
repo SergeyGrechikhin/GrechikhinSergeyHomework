@@ -37,7 +37,15 @@ public class ProductRepository {
         }
         return null;
     }
-    public Product[] findAllCars(){
+    public Product findByName(String productName){
+        for (int i = 0; i < productsCounter; i++) {
+            if (products[i].getProductName().equals(productName)) {
+                return products[i];
+            }
+        }
+        return null;
+    }
+    public Product[] findAllProducts(){
         return Arrays.copyOf(products,productsCounter);
     }
 
