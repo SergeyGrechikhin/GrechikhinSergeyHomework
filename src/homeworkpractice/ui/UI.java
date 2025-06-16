@@ -99,13 +99,15 @@ public class UI {
         Task[] sortedtasks = taskService.getTasksSortedByPriority();
         if (sortedtasks.length == 0) {
             System.out.println("Tasks not added to the catalog yet ");
-        }
-        System.out.println("Sorted Tasks : ");
-        for (int i = 0; i < sortedtasks.length ; i++) {
-            if (sortedtasks[i] != null) {
-                System.out.println(sortedtasks[i]);
+        }else {
+            System.out.println("Sorted Tasks : ");
+            for (int i = 0; i < sortedtasks.length ; i++) {
+                if (sortedtasks[i] != null) {
+                    System.out.println(sortedtasks[i]);
+                }
             }
         }
+
     }
 
     public void ChangeStatus(){
