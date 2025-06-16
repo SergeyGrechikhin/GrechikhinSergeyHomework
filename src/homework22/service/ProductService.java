@@ -19,6 +19,9 @@ public class ProductService {
             System.out.println("Product with this ID already exists!");
             return null;
         }
+        if (productRepository.findProductsByProductName(productName) != null) {
+            System.out.println("Product with this name already exists!");
+        }
         Product product = new Product(producer, price, id, productName);
         productRepository.save(product);
         return new Product[]{product};
