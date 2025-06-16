@@ -65,6 +65,10 @@ public class TaskService {
         return taskRepository.getTaskCounter();
     }
 
+    public Task[] getTaskPriority(int myPriority) {
+        return taskRepository.findByPriority(myPriority);
+    }
+
 
 
 }

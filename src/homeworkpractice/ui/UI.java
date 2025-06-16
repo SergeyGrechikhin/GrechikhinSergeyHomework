@@ -124,6 +124,23 @@ public class UI {
             System.out.println("Task status updated failed");
         }
     }
+    public void printInfoByPriority(){
+        System.out.println("Enter your priority /Only Int (1-10)");
+        int priority = input.nextInt();
+        input.nextLine();
+        Task[] foundMyPriority = taskService.getTaskPriority(priority);
+        if (foundMyPriority.length == 0) {
+            System.out.println("Tasks with this priority not found");
+        } else  {
+            System.out.println("Tasks : ");
+            for (int i = 0; i < foundMyPriority.length ; i++) {
+                if (foundMyPriority[i] != null) {
+                    System.out.println(foundMyPriority[i]);
+                }
+            }
+        }
+    }
+
 
     public void UserMenu(){
         while(true){
@@ -146,6 +163,7 @@ public class UI {
                         System.out.println("\n===*Search Tasks*===");
                         System.out.println("1. Find by ID");
                         System.out.println("2. Find by Title");
+                        System.out.println("3. Find by Priority");
                         System.out.println("0. Exit in main menu");
                         String userСhoiceExtra = input.nextLine();
                         switch (userСhoiceExtra) {
@@ -155,6 +173,9 @@ public class UI {
                             case "2":
                                 printInfoforFindTaskTitle();
                                 break;
+                                case "3":
+                                    printInfoByPriority();
+                                    break;
                             case "0":
                                 System.out.println("Back to the main menu");
                                 break;
@@ -177,8 +198,7 @@ public class UI {
                 case "5" :
                     ChangeStatus();
                     break;
-
-                case "0":
+                    case "0":
                     System.out.println("Exit");
                     return;
                 default:
