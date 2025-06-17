@@ -84,16 +84,16 @@ public class UI {
 
     public void printInfo() {
         Task[] tasks = taskService.getAllTasks();
-        if (tasks.length == 0) {
-            System.out.println("Tasks not added to the catalog yet ");
-            return;
-        }
-        System.out.println(" Info : ");
+        boolean isEmpty = true;
+        System.out.println("Information about the tasks : ");
         for (int i = 0; i < tasks.length; i++) {
-            if (tasks[i] == null) {
-                return;
+            if (tasks[i] != null) {
+                System.out.println(tasks[i]);
+                isEmpty = false;
             }
-            System.out.println(tasks[i]);
+        }
+        if (isEmpty) {
+            System.out.println("Tasks not added to the database yet");
         }
     }
 
@@ -102,7 +102,7 @@ public class UI {
         if (sortedtasks.length == 0) {
             System.out.println("Tasks not added to the catalog yet ");
         } else {
-            System.out.println("Sorted Tasks : ");
+            System.out.println(" Sort tasks . High priority tasks come first : ");
             for (int i = 0; i < sortedtasks.length; i++) {
                 if (sortedtasks[i] != null) {
                     System.out.println(sortedtasks[i]);
@@ -145,6 +145,19 @@ public class UI {
         }
     }
 
+    public void deleteTaskById() {
+        System.out.println("Enter the task id which you want to delete");
+        int id = input.nextInt();
+        input.nextLine();
+        boolean deletedTask = taskService.deleteTaskById(id);
+
+        if (deletedTask) {
+            System.out.println("Task deleted successfully");
+        } else  {
+            System.out.println("Task not deleted successfully");
+        }
+    }
+
     public void ExtraMenu() {
         while (true) {
             System.out.println("===*Search Task*===");
@@ -182,6 +195,7 @@ public class UI {
             System.out.println("3. Sort tasks by priority");
             System.out.println("4. Info about all tasks.");
             System.out.println("5. Change status of a task");
+            System.out.println("6. Delete a task");
             System.out.println("0. Exit.");
 
             String userChoice = input.nextLine();
@@ -202,6 +216,9 @@ public class UI {
                 case "5":
                     ChangeStatus();
                     break;
+                    case "6":
+                        deleteTaskById();
+                        break;
                 case "0":
                     System.out.println("Exit");
                     return;

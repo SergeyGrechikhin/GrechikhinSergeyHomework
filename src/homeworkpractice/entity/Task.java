@@ -41,13 +41,14 @@ public class Task {
 
     @Override
     public String toString() {
-        return "\nTask" +
-                "\nid=" + id +
-                ", \nTaskTitle='" + TaskTitle + '\'' +
-                ", \nTaskDescription='" + TaskDescription + '\'' +
-                ", \nTaskPriority=" + TaskPriority +
-                ", \nTaskStatus=" + TaskStatus +
-                ", \n================= "
+        return
+                "\nTask" +
+                " \nid : " + id +
+                " \nTaskTitle : " + TaskTitle   +
+                " \nTaskDescription : " + TaskDescription  +
+                " \nTaskPriority : " + TaskPriority +
+                " \nTaskStatus : " + TaskStatus +
+                " \n================= "
                 ;
     }
 }

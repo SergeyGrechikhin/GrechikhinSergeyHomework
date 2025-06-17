@@ -32,7 +32,7 @@ public class TaskRepository {
     }
     public Task findById(int IdForSearch){
         for (int i = 0; i < taskCounter; i++) {
-            if (tasks[i].getId() == IdForSearch) {
+            if (tasks[i] != null && tasks[i].getId() == IdForSearch) {
                 return tasks[i];
             }
         }
@@ -43,7 +43,7 @@ public class TaskRepository {
        Task[] results = new Task[taskCounter];
        int index = 0;
        for( int i = 0; i < taskCounter; i++ ){
-           if (tasks[i].getTaskPriority() == PriorityForSearch) {
+           if ( tasks[i] != null && tasks[i].getTaskPriority() == PriorityForSearch) {
                results[index++] = tasks[i];
            }
        }
@@ -52,7 +52,7 @@ public class TaskRepository {
 
     public  Task findByTaskTitle(String TaskTitle){
         for (int i = 0; i < taskCounter; i++) {
-            if (tasks[i].getTaskTitle().equals(TaskTitle)) {
+            if ( tasks[i] != null && tasks[i].getTaskTitle().equals(TaskTitle)) {
                 return tasks[i];
             }
         }
@@ -60,6 +60,16 @@ public class TaskRepository {
     }
     public Task[] findAllTask(){
         return Arrays.copyOf(tasks, taskCounter);
+    }
+
+    public boolean deleteById(int IdForSearch){
+        for (int i = 0; i < taskCounter; i++) {
+            if (tasks[i] != null && tasks[i].getId() == IdForSearch) {
+                tasks[i] = null;
+                return true;
+            }
+        }
+        return false;
     }
 
 

@@ -51,7 +51,7 @@ public class TaskService {
         Task[] tasks = taskRepository.findAllTask();
         for (int i = 0; i < tasks.length; i++) {
             for (int j = i + 1; j < tasks.length; j++) {
-                if (tasks[i].getTaskPriority() > tasks[j].getTaskPriority()) {
+                if (tasks[i].getTaskPriority() < tasks[j].getTaskPriority()) {
                     Task temp = tasks[i];
                     tasks[i] = tasks[j];
                     tasks[j] = temp;
@@ -67,6 +67,10 @@ public class TaskService {
 
     public Task[] getTaskPriority(int myPriority) {
         return taskRepository.findByPriority(myPriority);
+    }
+
+    public boolean deleteTaskById(int id){
+        return taskRepository.deleteById(id);
     }
 
 
