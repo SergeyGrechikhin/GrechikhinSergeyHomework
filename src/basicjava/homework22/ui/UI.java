@@ -102,20 +102,7 @@ public class UI {
         }
     }
 
- /*   private void printInfoforFindbyProductName(){  //Метод который ищет все имена если они одинакковые
-        System.out.println("Enter the Product name by which you want to find the product");
-        String productname = input.nextLine();
-        Product[] foundproductname = productService.findAllProductsByProductName(productname);
-        if(foundproductname.length == 0){
-            System.out.println("Product with this product name  " +  productname  + " not found ");
-        } else {
-            System.out.println("Product with this product name " +
-                    " " +  productname  +  " : " );
-            for (int i = 0; i < foundproductname.length ; i++) {
-                System.out.println(" - " + foundproductname[i]);
-            }
-        }
-    }*/
+
     private void printInfoforFindbyProductNameandProducer(){
         System.out.println("Enter the Product name and Producer by which you want to find the product");
         System.out.println("Product name");
