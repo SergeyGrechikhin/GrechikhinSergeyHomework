@@ -46,6 +46,7 @@ public class TaskRepository {
                results[index++] = tasks[i];
            }
        }
+
        return Arrays.copyOf(results, index);
     }
 
