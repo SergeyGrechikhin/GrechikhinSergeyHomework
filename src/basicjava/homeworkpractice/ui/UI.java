@@ -149,7 +149,7 @@ public class UI {
         System.out.println("Enter the task id which you want to delete");
         int id = input.nextInt();
         input.nextLine();
-        boolean deletedTask = taskService.deleteTaskById(id);
+        boolean deletedTask = taskService.deleteByid(id);
 
         if (deletedTask) {
             System.out.println("Task deleted successfully");

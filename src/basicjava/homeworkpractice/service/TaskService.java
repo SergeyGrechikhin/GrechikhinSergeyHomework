@@ -68,8 +68,10 @@ public class TaskService {
         return taskRepository.findByPriority(myPriority);
     }
 
-    public boolean deleteTaskById(int id){
-        return taskRepository.deleteById(id);
+
+
+    public boolean deleteByid(int id) {
+       return taskRepository.deleteById(id);
     }
 
 

@@ -61,15 +61,23 @@ public class TaskRepository {
         return Arrays.copyOf(tasks, taskCounter);
     }
 
+
+
     public boolean deleteById(int IdForSearch){
-        for (int i = 0; i < taskCounter; i++) {
-            if (tasks[i] != null && tasks[i].getId() == IdForSearch) {
-                tasks[i] = null;
-                return true;
+        for  (int i = 0; i < taskCounter; i++) {
+            if ( tasks[i] != null && tasks[i].getId() == IdForSearch) {
+                for (int j = 0; j < taskCounter; j++) {
+                    tasks[j] = tasks[j+1];
+                }
+                tasks[taskCounter-1] = null;
+                taskCounter--;
+                return  true;
             }
         }
         return false;
     }
+
+
 
 
 
