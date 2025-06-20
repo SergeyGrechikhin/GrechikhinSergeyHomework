@@ -163,12 +163,12 @@ public class UI {
             System.out.println("===*Search Task*===");
             System.out.println("1. Find by ID");
             System.out.println("2. Find by Title");
-            System.out.println("3.Find by Priority");
+            System.out.println("3. Find by Priority");
             System.out.println("4. Back to Main Menu");
             String userextrachoice = input.nextLine();
             switch (userextrachoice) {
                 case "1":
-                    printInfoforFindTaskTitle();
+                    printInfoforFindtoId();
                     break;
                     case "2":
                         printInfoforFindTaskTitle();
