@@ -17,9 +17,7 @@ public class Tea {
         return type;
     }
 
-    public String getVariety() {
-        return variety;
-    }
+
 
     public int getId() {
         return id;
