@@ -15,27 +15,27 @@ public class UI {
     }
 
 
-    public void infoAboutAllTeas(){
+    public void infoAboutAllTeas() {
         Tea[] teas = teaService.getAllTeas();
         printTeas(teas);
     }
 
-    public void searchByManufacturer(){
+    public void searchByManufacturer() {
         System.out.println("Enter Manufacturer Name: ");
         String manufacturer = scanner.nextLine();
         Tea[] teas = teaService.searchByManufacturer(manufacturer);
         printTeas(teas);
     }
 
-    public void searchByType(){
+    public void searchByType() {
         System.out.println("Enter Type of Tea: ");
         String type = scanner.nextLine();
         Tea[] teas = teaService.searchByType(type);
         printTeas(teas);
     }
 
-    public void printTeas(Tea[] teas){
-        if (teas.length  == 0) {
+    public void printTeas(Tea[] teas) {
+        if (teas.length == 0) {
             System.out.println("Teas not found");
         } else {
             for (int i = 0; i < teas.length; i++) {
@@ -44,11 +44,11 @@ public class UI {
         }
     }
 
-    public void printMenu(){
+    public void printMenu() {
         System.out.println("===*Tea Catalog*===");
         System.out.println("1. Info about all Tea");
         System.out.println("2.Search By Manufacturer");
-    System.out.println("3. Search By Type");
+        System.out.println("3. Search By Type");
         System.out.println("4. Exit Tea");
     }
 
@@ -71,15 +71,15 @@ public class UI {
                 case "1":
                     infoAboutAllTeas();
                     break;
-                    case "2":
-                        searchByManufacturer();
-                        break;
-                        case "3":
-                            searchByType();
-                            break;
-                            case "4":
-                                exitProgramm();
-                                start = false;
+                case "2":
+                    searchByManufacturer();
+                    break;
+                case "3":
+                    searchByType();
+                    break;
+                case "4":
+                    exitProgramm();
+                    start = false;
                 default:
                     invalidUserChoise();
             }
