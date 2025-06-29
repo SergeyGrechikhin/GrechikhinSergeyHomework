@@ -1,7 +1,4 @@
-package javapro.studentmanager;
-
-import java.sql.SQLOutput;
-import java.util.Scanner;
+package javapro.summarupro2.studentmanager;
 
 public class StudentDemo {
     public static void main(String[] args) {

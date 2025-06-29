@@ -1,4 +1,4 @@
-package javapro.translate;
+package javapro.summarupro2.translate;
 
 import java.util.Arrays;
 import java.util.HashMap;

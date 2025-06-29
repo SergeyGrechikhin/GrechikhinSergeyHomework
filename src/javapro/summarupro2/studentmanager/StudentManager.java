@@ -1,4 +1,4 @@
-package javapro.studentmanager;
+package javapro.summarupro2.studentmanager;
 
 import java.util.HashMap;
 
