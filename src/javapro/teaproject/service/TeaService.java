@@ -9,8 +9,7 @@ import javapro.teaproject.repository.TypeOfTeaRepository;
 
 public class TeaService {
     private TeaRepository teaRepository;
-    private ManufacturerService manufacturerService;
-    private TypeOfTeaService typeOfTeaService;
+
 
     public TeaService(TeaRepository teaRepository) {
         this.teaRepository = teaRepository;
