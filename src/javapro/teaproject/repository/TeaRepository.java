@@ -1,7 +1,11 @@
 package javapro.teaproject.repository;
 
-import javapro.teaproject.TeaConfiguration;
+import javapro.teaproject.configuration.TeaConfiguration;
+import javapro.teaproject.entity.Manufacturer;
 import javapro.teaproject.entity.Tea;
+import javapro.teaproject.entity.TypeOfTea;
+
+import java.util.Arrays;
 
 public class TeaRepository {
     private Tea[] teas;
@@ -19,48 +23,44 @@ public class TeaRepository {
             }
         }
     }
-    public Tea[] getAll(){
-        Tea[] teaInfo = new Tea[teascounter];
-        for (int i = 0; i < teascounter; i++) {
-            teaInfo[i] = teas[i];
-        }
-        return teaInfo;
+
+    public Tea[] findAll() {
+        return Arrays.copyOf(teas, teascounter);
     }
-    public Tea[] findByManufacturer(String manufacturer){
+
+    public Tea[] findByManufacturer(Manufacturer manufacturer) {
         int counter = 0;
-        for (int i = 0; i < teascounter; i++) {
-            if (teas[i].getManufacturer().getName().equalsIgnoreCase(manufacturer)) {
+        for (Tea tea : findAll()) {
+            if (tea.getManufacturer().equals(manufacturer)) {
                 counter++;
             }
         }
-        Tea[] teaManufacturer = new Tea[counter];
-        int teaIndex = 0;
-        for (int i = 0; i < teascounter; i++) {
-            if (teas[i].getManufacturer().getName().equalsIgnoreCase(manufacturer)) {
-                teaManufacturer[teaIndex] = teas[i];
-                teaIndex++;
+        Tea[] teas = new Tea[counter];
+        int index = 0;
+        for (Tea tea : findAll()) {
+            if (tea.getManufacturer().equals(manufacturer)) {
+                teas[index++] = tea;
             }
         }
-        return teaManufacturer;
+        return teas;
     }
 
-    public Tea[] findBytypeTea(String typeTea){
-        int typeCounter = 0;
-        for (int i = 0; i < teascounter; i++) {
-            if (teas[i].getType().getTypeName().equalsIgnoreCase(typeTea)) {
-                typeCounter++;
+    public Tea[] findByTypeOfTea(TypeOfTea typeOfTea) {
+        int counter = 0;
+        for (Tea tea : findAll()) {
+            if (tea.getType().equals(typeOfTea)) {
+                counter++;
             }
         }
-        Tea[] teaType = new Tea[typeCounter];
-        int teaTypeIndex = 0;
-        for (int i = 0; i < teascounter; i++) {
-            if (teas[i].getType().getTypeName().equalsIgnoreCase(typeTea)) {
-                teaType[teaTypeIndex] = teas[i];
-                teaTypeIndex++;
+        Tea[] teas = new Tea[counter];
+        int index = 0;
+        for (Tea tea : findAll()) {
+            if (tea.getType().equals(typeOfTea)) {
+                teas[index++] = tea;
             }
         }
-        return teaType;
-
+        return teas;
     }
+
 
 }

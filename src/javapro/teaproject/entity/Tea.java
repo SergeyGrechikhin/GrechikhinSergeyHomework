@@ -34,7 +34,5 @@ public class Tea {
                         "\n Type : " + type.getTypeName() + " (" + type.getComment() + ") " +
                         "\n Manufacturer : " + manufacturer.getName() + " (" + manufacturer.getComment() + ") " +
                         "\n Id : " + id + "\n";
-
     }
-
 }

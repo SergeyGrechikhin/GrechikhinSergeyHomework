@@ -23,5 +23,12 @@ public class TypeOfTea {
         return typeName;
     }
 
-
+    @Override
+    public String toString() {
+        return "TypeOfTea{" +
+                "id=" + id +
+                ", typeName='" + typeName + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }

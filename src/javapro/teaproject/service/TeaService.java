@@ -3,45 +3,44 @@ package javapro.teaproject.service;
 import javapro.teaproject.entity.Manufacturer;
 import javapro.teaproject.entity.Tea;
 import javapro.teaproject.entity.TypeOfTea;
+import javapro.teaproject.repository.ManufacturerRepository;
 import javapro.teaproject.repository.TeaRepository;
+import javapro.teaproject.repository.TypeOfTeaRepository;
 
 public class TeaService {
     private TeaRepository teaRepository;
+    private ManufacturerService manufacturerService;
+    private TypeOfTeaService typeOfTeaService;
 
     public TeaService(TeaRepository teaRepository) {
         this.teaRepository = teaRepository;
     }
 
-    public void addDataBase() {
-        Manufacturer manufacturer1 = new Manufacturer(0,"Ahmad","New Brand");
-        Manufacturer manufacturer2 = new Manufacturer(1,"Maxi","EU Brand");
-        Manufacturer manufacturer3 = new Manufacturer(2,"Tetley Tea","EU Brand");
-        Manufacturer manufacturer4 = new Manufacturer(3,"Greenfield.","EU Brand");
 
-        TypeOfTea typeOfTea1 = new TypeOfTea(0,"Black","Healthy");
-        TypeOfTea typeOfTea2 = new TypeOfTea(1,"Green","Fresh");
+    public void addDataBase(Manufacturer[] manufacturers, TypeOfTea[] typeOfTeas) {
+
         Tea[] alltea = {
-                new Tea(1,manufacturer1,typeOfTea1,"Earl Grei"),
-       new Tea(2,manufacturer2,typeOfTea2,"Carcade"),
-        new Tea(3,manufacturer1,typeOfTea2,"Matcha"),
-         new Tea(4,manufacturer3,typeOfTea1,"Flowers"), new Tea(5,manufacturer4,typeOfTea2,"Gold"),
+         new Tea(1,manufacturers[0],typeOfTeas[0],"Earl Grey"),
+                new Tea(2,manufacturers[1],typeOfTeas[1],"Carcade"),
+                new Tea(3,manufacturers[3],typeOfTeas[1],"Earl Green"),
+                new Tea(4,manufacturers[2],typeOfTeas[0],"Gold"),
+                new Tea(5,manufacturers[0],typeOfTeas[1],"Gold"),
+                new Tea(6,manufacturers[1],typeOfTeas[0],"Flowers"),
+                new Tea(9,manufacturers[2],typeOfTeas[1],"Earl Green"),
+                new Tea(10,manufacturers[3],typeOfTeas[1],"Earl Green"),
         } ;
-
-
         teaRepository.addTea(alltea);
-
-
     }
 
     public Tea[] getAllTeas() {
-        return teaRepository.getAll();
+        return teaRepository.findAll();
     }
 
-    public Tea[] searchByType(String type) {
-        return teaRepository.findBytypeTea(type);
+    public Tea[] searchByType(TypeOfTea type) {
+        return teaRepository.findByTypeOfTea(type);
     }
 
-    public Tea[] searchByManufacturer(String manufacturer) {
+    public Tea[] searchByManufacturer(Manufacturer manufacturer) {
         return teaRepository.findByManufacturer(manufacturer);
     }
 }

@@ -23,5 +23,12 @@ public class Manufacturer {
         return comment;
     }
 
-
+    @Override
+    public String toString() {
+        return "Manufacturer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }
