@@ -15,10 +15,10 @@ public class ManufacturerRepository {
         this.mCounter = 0;
     }
 
-    public void addManufacturer(Manufacturer[] newmanufacturers){
-        for (int i = 0; i < newmanufacturers.length; i++) {
-            if(mCounter < newmanufacturers.length){
-                manufacturers[mCounter++] = newmanufacturers[i];
+    public void addManufacturer(Manufacturer[] brands){
+        for (int i = 0; i < brands.length; i++) {
+            if(mCounter < brands.length){
+                manufacturers[mCounter++] = brands[i];
             }
         }
     }

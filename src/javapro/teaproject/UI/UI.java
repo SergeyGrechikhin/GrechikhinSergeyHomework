@@ -158,7 +158,7 @@ public class UI {
         while(true){
             System.out.println("===*Tea Catalog*===");
             System.out.println("1. Info about all Tea");
-            System.out.println("2.Search By Manufacturer");
+            System.out.println("2. Search By Manufacturer");
             System.out.println("3. Search By Type");
             System.out.println("4. Exit Tea");
             String choice = scanner.nextLine();
