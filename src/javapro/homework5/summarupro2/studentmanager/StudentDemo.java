@@ -1,4 +1,4 @@
-package javapro.summarupro2.studentmanager;
+package javapro.homework5.summarupro2.studentmanager;
 
 public class StudentDemo {
     public static void main(String[] args) {
