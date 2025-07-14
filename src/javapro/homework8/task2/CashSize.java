@@ -36,8 +36,11 @@ public class CashSize {
             }
         }
 
+
+
         System.out.println("Cash : " + cash);
         System.out.println("Trash : " + trash);
+
 
 
     }
