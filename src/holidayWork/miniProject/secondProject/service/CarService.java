@@ -86,21 +86,7 @@ public class CarService {
         return new ResponceCarDTO(true,"Cars found : "  + list.size() + list);
     }
 
-    public ResponceCarDTO findByPrice(double price){
-        List<Car> list = carRepository.findAll().stream().filter(c -> c.getPrice() == price).collect(Collectors.toList());
-        if(list.isEmpty()){
-            return new ResponceCarDTO(false,"Cars not found");
-        }
-        return new ResponceCarDTO(true,"Cars found : "  + list.size() + list);
-    }
 
-    public ResponceCarDTO findByRating(double rating){
-        List<Car> list = carRepository.findAll().stream().filter(c -> c.getRating() == rating).collect(Collectors.toList());
-        if(list.isEmpty()){
-            return new ResponceCarDTO(false,"Cars not found");
-        }
-        return new ResponceCarDTO(true,"Cars found : "  + list.size() + list);
-    }
 
     public ResponceCarDTO sortByPrice() {
         List<Car> list = carRepository.findAll().stream().sorted(Comparator.comparing(Car::getPrice)).collect(Collectors.toList());

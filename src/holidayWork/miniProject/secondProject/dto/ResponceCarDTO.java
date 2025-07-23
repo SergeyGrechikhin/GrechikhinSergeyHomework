@@ -5,11 +5,7 @@ public class ResponceCarDTO {
     private String message;
     private Object data;
 
-    public ResponceCarDTO(boolean success, Object data, String message) {
-        this.success = success;
-        this.data = data;
-        this.message = message;
-    }
+
 
     public ResponceCarDTO(boolean success, String message) {
         this.success = success;
