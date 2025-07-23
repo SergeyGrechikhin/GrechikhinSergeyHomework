@@ -10,21 +10,21 @@ import java.util.Map;
 
 public class CompanyRepository {
 
-    private final Map<String, Company> companys = new HashMap<String, Company>();
+    private final Map<String, Company> companyss = new HashMap<String, Company>();
 
     public void save(Company company) {
-        companys.put(company.getCompanyName(), company);
+        companyss.put(company.getCompanyName(), company);
     }
 
     public Company findByName(String name) {
-        return companys.get(name);
+        return companyss.get(name);
     }
 
     public boolean exists(String name) {
-        return companys.containsKey(name);
+        return companyss.containsKey(name);
     }
 
     public List<Company> findAll() {
-        return new ArrayList<>(companys.values());
+        return new ArrayList<>(companyss.values());
     }
 }
