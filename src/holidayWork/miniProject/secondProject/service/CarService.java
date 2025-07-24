@@ -54,6 +54,33 @@ public class CarService {
         return new ResponceCarDTO(true,"Price updated");
     }
 
+    public ResponceCarDTO updateYear(String vin, int newYear){
+        Car carForNewYear = carRepository.findbyVin(vin);
+        if(carForNewYear == null){
+            return new ResponceCarDTO(false,"Car with Vin number not found");
+        }
+        carForNewYear.setYear(newYear);
+        return new ResponceCarDTO(true,"Year updated");
+    }
+
+    public ResponceCarDTO updateBrand(String vin, String newBrand){
+        Car carForNewBrand = carRepository.findbyVin(vin);
+        if(carForNewBrand == null){
+            return new ResponceCarDTO(false,"Car with Vin number not found");
+        }
+        carForNewBrand.setBrand(newBrand);
+        return new ResponceCarDTO(true,"Brand updated");
+    }
+
+    public ResponceCarDTO updateModel(String vin, String newModel){
+        Car carForNewModel = carRepository.findbyVin(vin);
+        if(carForNewModel == null){
+            return new ResponceCarDTO(false,"Car with Vin number not found");
+        }
+        carForNewModel.setModel(newModel);
+        return new ResponceCarDTO(true,"Model updated");
+    }
+
     public ResponceCarDTO findByBrand(String brand){
         List<Car> list = carRepository.findAll().stream().filter(c -> c.getBrand().equalsIgnoreCase(brand)).collect(Collectors.toList());
         if(list.isEmpty()){

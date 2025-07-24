@@ -19,7 +19,7 @@ public class UI {
             System.out.println("2.Find Car");
             System.out.println("3.Sorting");
             System.out.println("4.Delete Car");
-            System.out.println("5.Update Rating");
+            System.out.println("5.Update Menu");
             System.out.println("0.Exit");
             String choice = scanner.nextLine();
             switch (choice) {
@@ -27,7 +27,7 @@ public class UI {
                 case "2" -> menuForSearch();
                 case "3" -> menuForSorting();
                 case "4" ->  deleteCar();
-                case "5" -> updateCarRating();
+                case "5" -> menuForUpdate();
                 case "0" -> {
                     System.out.println("Exit");
                     return;
@@ -82,6 +82,28 @@ public class UI {
         }
     }
 
+    private void menuForUpdate(){
+        while(true){
+            System.out.println("*==Update*===");
+            System.out.println("1.Update Brand");
+            System.out.println("2.Update Price");
+            System.out.println("3.Update Rating");
+            System.out.println("4.Update Model");
+            System.out.println("5.Update Year");
+            System.out.println("6.Back to Main Menu");
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "1" -> updateCarBrand();
+                case "2" -> updateCarPrice();
+                case "3" -> updateCarRating();
+                case "4" -> updateCarModel();
+                case "5" -> updateCarYear();
+                case "6" -> printMenu();
+                default -> System.out.println("Invalid choice");
+            }
+        }
+    }
+
 
     private void createCar(){
         System.out.println("Enter Brand");
@@ -106,10 +128,45 @@ public class UI {
     }
 
     private void updateCarRating(){
-        System.out.println("Enter VIN Number for update");
+        System.out.println("Enter VIN Number ");
         String vin = scanner.nextLine();
         double newRating = readDouble("Enter New Rating");
         ResponceCarDTO responce = carService.updateRating(vin,newRating);
+        System.out.println(responce.getMessage());
+    }
+
+    private void updateCarPrice(){
+        System.out.println("Enter VIN Number ");
+        String vin = scanner.nextLine();
+        double newPrice = readDouble("Enter New Price");
+        ResponceCarDTO responce = carService.updatePrice(vin,newPrice);
+        System.out.println(responce.getMessage());
+    }
+
+    private void updateCarBrand(){
+        System.out.println("Enter VIN Number ");
+        String vin = scanner.nextLine();
+        System.out.println("Enter Brand for update");
+        String brand = scanner.nextLine();
+        ResponceCarDTO responce = carService.updateBrand(vin,brand);
+        System.out.println(responce.getMessage());
+    }
+
+    private void updateCarModel(){
+        System.out.println("Enter VIN Number ");
+        String vin = scanner.nextLine();
+        System.out.println("Enter Model for update");
+        String model = scanner.nextLine();
+        ResponceCarDTO responce = carService.updateModel(vin,model);
+        System.out.println(responce.getMessage());
+    }
+
+    private void updateCarYear(){
+        System.out.println("Enter Vin Number ");
+        String vin = scanner.nextLine();
+
+        int year = readInt("Enter Year for Update");
+        ResponceCarDTO responce = carService.updateYear(vin,year);
         System.out.println(responce.getMessage());
     }
 
