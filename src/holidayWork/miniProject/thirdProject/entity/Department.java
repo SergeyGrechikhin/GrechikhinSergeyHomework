@@ -27,11 +27,10 @@ public class Department {
         employees.add(employee);
     }
 
+
     @Override
     public String toString() {
-        return "Department{" +
-                "departmentName='" + departmentName + '\'' +
-                ", employees=" + employees +
-                '}';
+        return "Department : " + departmentName +
+                "\n Employees : " + (employees.isEmpty() ? "none" : employees.stream().map(Employee::getFullName).toList());
     }
 }

@@ -23,12 +23,12 @@ public class Employee {
         return id;
     }
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
     @Override
     public String toString() {
-        return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", id='" + id + '\'' +
-                '}';
+        return "Employee : " + firstName + " " + lastName + " ID " + id ;
     }
 }

@@ -26,9 +26,7 @@ public class Company {
 
     @Override
     public String toString() {
-        return "Company{" +
-                "companyName='" + companyName + '\'' +
-                ", departments=" + departments +
-                '}';
+        return " Company : " + companyName +
+                "\n Departments : " + (departments.isEmpty() ? "none" : departments.stream().map(Department ::getDepartmentName).toList());
     }
 }
