@@ -11,6 +11,7 @@ import holidayWork.miniProject.thirdProject.entity.Employee;
 import holidayWork.miniProject.thirdProject.repository.DepartmentRepository;
 import holidayWork.miniProject.thirdProject.repository.EmployeeRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentService {
@@ -44,6 +45,15 @@ public class DepartmentService {
         return  ResponceCompanyDTO.requestTrue(null,"Employee added successfully");
     }
     public List<Department> getAllDepartments() {
-        return departmentRepository.findAll();
+        return new ArrayList<>(departmentRepository.findAll());
+    }
+
+
+    public ResponceCompanyDTO deleteDepartment(String name) {
+        if (!departmentRepository.exists(name)) {
+            return ResponceCompanyDTO.requestFalse(null,"Department not found");
+        }
+        departmentRepository.deleteDepartment(name);
+        return ResponceCompanyDTO.requestTrue(null,"Department deleted successfully");
     }
 }

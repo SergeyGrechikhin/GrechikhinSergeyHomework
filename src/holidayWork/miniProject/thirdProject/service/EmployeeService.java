@@ -8,6 +8,7 @@ import holidayWork.miniProject.thirdProject.dto.ResponceCompanyDTO;
 import holidayWork.miniProject.thirdProject.entity.Employee;
 import holidayWork.miniProject.thirdProject.repository.EmployeeRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,7 +29,7 @@ public class EmployeeService {
     }
 
     public List<Employee> findAll() {
-        return (List<Employee>) employeeRepository.findAll();
+        return new ArrayList<>(employeeRepository.findAll());
     }
 
     public ResponceCompanyDTO findByFirstName(String firstName){
@@ -45,5 +46,13 @@ public class EmployeeService {
             return ResponceCompanyDTO.requestFalse(null,"Employees not found") ;
         }
         return  ResponceCompanyDTO.requestTrue(list,"Employee successfully found");
+    }
+
+    public ResponceCompanyDTO deleteById(String id){
+        if (!employeeRepository.existsById(id)) {
+            return ResponceCompanyDTO.requestFalse(null,"Employee with this id does not exist");
+        }
+        employeeRepository.deleteEmployee(id);
+        return  ResponceCompanyDTO.requestTrue(id,"Employee successfully deleted");
     }
 }

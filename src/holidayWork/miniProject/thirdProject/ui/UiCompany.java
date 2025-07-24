@@ -41,12 +41,14 @@ public class UiCompany {
         System.out.println("Enter your Department name:");
         String name = scanner.nextLine();
         ResponceCompanyDTO<?> responce = departmentService.createDepartment(name);
+        System.out.println(responce.getMessage());
     }
 
     private void createCompany (){
         System.out.println("Enter your Company name:");
         String name = scanner.nextLine();
         ResponceCompanyDTO<?> responce = companyService.createCompany(name);
+        System.out.println(responce.getMessage());
     }
 
     private void employeeToDepartment (){
@@ -64,6 +66,7 @@ public class UiCompany {
         System.out.println("Enter your Company Name : ");
         String companyName = scanner.nextLine();
         ResponceCompanyDTO<?> responce = companyService.addDepartmentToCompany(name,companyName);
+        System.out.println(responce.getMessage());
     }
 
     private void showEmployee () {
@@ -109,28 +112,115 @@ public class UiCompany {
         }
     }
 
-    public void menu(){
+
+    private void deleteEmployee () {
+        System.out.println("Enter Employee id for delete :");
+        String id = scanner.nextLine();
+        ResponceCompanyDTO responce = employeeService.deleteById(id);
+        System.out.println(responce.getMessage());
+    }
+
+    private void deleteDepartment () {
+        System.out.println("Enter Department name for delete : ");
+        String name = scanner.nextLine();
+        ResponceCompanyDTO responce = departmentService.deleteDepartment(name);
+        System.out.println(responce.getMessage());
+    }
+
+    private void deleteCompany() {
+        System.out.println("Enter Company name for delete : ");
+        String name = scanner.nextLine();
+        ResponceCompanyDTO responce = companyService.deleteCompany(name);
+        System.out.println(responce.getMessage());
+    }
+
+
+
+
+    private void menuDeletePersonal(){
         while (true) {
-            System.out.println("Menu");
-            System.out.println("1.Add Employee");
-            System.out.println("2.Add Department");
-            System.out.println("3.Add Company");
-            System.out.println("4.Find All Company");
-            System.out.println("5.Find All Departments");
-            System.out.println("6.Find All Employees");
-            System.out.println("7.Transfer of employee to department");
-            System.out.println("8.Transfer of department to company");
-            System.out.println("0.Выход");
+            System.out.println("===*Delete*===");
+            System.out.println("1.Delete Employee");
+            System.out.println("2.Delete Department");
+            System.out.println("3.Delete Company");
+            System.out.println("4.Back to Main Menu");
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "1" -> deleteEmployee();
+                case "2" -> deleteDepartment();
+                case "3" -> deleteCompany();
+                case "4" -> menu();
+                default -> System.out.println("Wrong choice");
+            }
+        }
+    }
+
+    private void menuForSearch(){
+        while (true) {
+            System.out.println("===*Search*===");
+            System.out.println("1.Search all Employee");
+            System.out.println("2.Search all Department");
+            System.out.println("3.Search all Company");
+            System.out.println("4.Back to Main Menu");
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "1" -> showEmployee();
+                case "2" -> showDepartment();
+                case "3" -> showCompany();
+                case "4" -> menu();
+                default -> System.out.println("Wrong choice");
+            }
+        }
+    }
+
+    private void menuForCreate(){
+        while (true) {
+            System.out.println("===*Create*===");
+            System.out.println("1.Create Employee");
+            System.out.println("2.Create Department");
+            System.out.println("3.Create Company");
+            System.out.println("4.Back to Main Menu");
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1" -> createEmployee();
                 case "2" -> createDepartment();
                 case "3" -> createCompany();
-                case "4" -> showCompany();
-                case "5" -> showDepartment();
-                case "6" -> showEmployee();
-                case "7" -> employeeToDepartment();
-                case "8" -> departmentToCompany();
+                case "4" -> menu();
+                default -> System.out.println("Wrong choice");
+            }
+        }
+    }
+
+    private void menuForTransfer(){
+        while (true) {
+            System.out.println("===*Transfer*===");
+            System.out.println("1.Transfer Employee to Department");
+            System.out.println("2.Transfer Department to Company");
+            System.out.println("3.Back to Main Menu");
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "1" -> employeeToDepartment();
+                case "2" -> departmentToCompany();
+                case "3" -> menu();
+                default -> System.out.println("Wrong choice");
+            }
+        }
+    }
+
+    public void menu(){
+        while (true) {
+            System.out.println("===*Menu*===");
+            System.out.println("1.Create Menu");
+            System.out.println("2.Search Menu");
+            System.out.println("3.Transfer Menu");
+            System.out.println("4.Delete menu");
+            System.out.println("0.Выход");
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "1" -> menuForCreate();
+                case "2" -> menuForSearch();
+                case "3" -> menuForTransfer();
+                case "4" -> menuDeletePersonal();
                 case "0" ->{
                     System.out.println("Exit");
                     return;

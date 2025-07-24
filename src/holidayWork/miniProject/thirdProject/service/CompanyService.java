@@ -46,4 +46,12 @@ public class CompanyService {
     public List<Company> getAllCompany() {
         return companyRepository.findAll();
     }
+
+    public ResponceCompanyDTO deleteCompany(String name) {
+        if (!companyRepository.exists(name)) {
+            return ResponceCompanyDTO.requestFalse(null,"Company not found");
+        }
+        companyRepository.deleteCompany(name);
+        return ResponceCompanyDTO.requestTrue(null,"Department deleted successfully");
+    }
 }

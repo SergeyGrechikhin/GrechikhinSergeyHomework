@@ -24,4 +24,10 @@ public class EmployeeRepository {
     public Collection<Employee> findAll() {
         return employees.values();
     }
+
+    public void deleteEmployee(String id) {
+        employees.remove(id);
+    }
+
+
 }

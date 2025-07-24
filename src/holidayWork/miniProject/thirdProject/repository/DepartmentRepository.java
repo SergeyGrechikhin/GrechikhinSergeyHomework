@@ -27,4 +27,8 @@ public class DepartmentRepository {
     public List<Department> findAll() {
         return new ArrayList<>(departments.values());
     }
+
+    public void deleteDepartment(String name) {
+        departments.remove(name);
+    }
 }

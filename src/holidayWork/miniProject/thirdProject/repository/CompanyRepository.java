@@ -27,4 +27,8 @@ public class CompanyRepository {
     public List<Company> findAll() {
         return new ArrayList<>(companyss.values());
     }
+
+    public void deleteCompany(String name) {
+        companyss.remove(name);
+    }
 }
