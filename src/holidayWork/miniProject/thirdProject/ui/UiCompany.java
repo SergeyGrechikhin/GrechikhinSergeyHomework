@@ -10,6 +10,7 @@ import holidayWork.miniProject.thirdProject.service.CompanyService;
 import holidayWork.miniProject.thirdProject.service.DepartmentService;
 import holidayWork.miniProject.thirdProject.service.EmployeeService;
 
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Scanner;
 
@@ -134,6 +135,24 @@ public class UiCompany {
         System.out.println(responce.getMessage());
     }
 
+    private void transferDepartmentForNewCompany(){
+        System.out.println("Enter Department name for new company : ");
+        String name = scanner.nextLine();
+        System.out.println("Enter new company name : ");
+        String companyName = scanner.nextLine();
+        ResponceCompanyDTO responce = companyService.transferDepartmentToOtherCompany(name,companyName);
+        System.out.println(responce.getMessage());
+    }
+
+    private void transferEmployeeForNewDepartment(){
+        System.out.println("Enter Employee id for new Department : ");
+        String id = scanner.nextLine();
+        System.out.println("Enter new Department name : ");
+        String name = scanner.nextLine();
+        ResponceCompanyDTO responce = departmentService.transferEmployeeToOtherDepartment(id,name);
+        System.out.println(responce.getMessage());
+    }
+
 
 
 
@@ -196,12 +215,16 @@ public class UiCompany {
             System.out.println("===*Transfer*===");
             System.out.println("1.Transfer Employee to Department");
             System.out.println("2.Transfer Department to Company");
-            System.out.println("3.Back to Main Menu");
+            System.out.println("3.Transfer Department to new Company");
+            System.out.println("4.Transfer Employee to new Department");
+            System.out.println("5.Back to Main Menu");
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1" -> employeeToDepartment();
                 case "2" -> departmentToCompany();
-                case "3" -> menu();
+                case "3" -> transferDepartmentForNewCompany();
+                case "4" -> transferEmployeeForNewDepartment();
+                case "5" -> menu();
                 default -> System.out.println("Wrong choice");
             }
         }

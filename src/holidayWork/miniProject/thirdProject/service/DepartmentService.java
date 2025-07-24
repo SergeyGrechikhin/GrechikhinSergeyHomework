@@ -6,6 +6,7 @@ import holidayWork.miniProject.firstProject.entity.Student;
 import holidayWork.miniProject.firstProject.repository.GruppeRepository;
 import holidayWork.miniProject.firstProject.repository.StudentRepository;
 import holidayWork.miniProject.thirdProject.dto.ResponceCompanyDTO;
+import holidayWork.miniProject.thirdProject.entity.Company;
 import holidayWork.miniProject.thirdProject.entity.Department;
 import holidayWork.miniProject.thirdProject.entity.Employee;
 import holidayWork.miniProject.thirdProject.repository.DepartmentRepository;
@@ -56,4 +57,24 @@ public class DepartmentService {
         departmentRepository.deleteDepartment(name);
         return ResponceCompanyDTO.requestTrue(null,"Department deleted successfully");
     }
+
+    public ResponceCompanyDTO<?> transferEmployeeToOtherDepartment(String employeeId,String departmentName) {
+        Employee employee = employeeRepository.findById(employeeId);
+        if (employee == null) {
+            return ResponceCompanyDTO.requestFalse(null,"Employee not found");
+        }
+        Department newDepartment = departmentRepository.findByName(departmentName);
+        if (newDepartment == null) {
+            return ResponceCompanyDTO.requestFalse(null,"Department not found");
+        }
+        Department oldDepartment = departmentRepository.findAll().stream().filter(department -> department.getEmployees().contains(employee)).findFirst().orElse(null);
+
+        if (oldDepartment != null) {
+            oldDepartment.getEmployees().remove(employee);
+        }
+        newDepartment.addEmployee(employee);
+        return ResponceCompanyDTO.requestTrue(null,"Department transferred successfully");
+    }
+
+
 }

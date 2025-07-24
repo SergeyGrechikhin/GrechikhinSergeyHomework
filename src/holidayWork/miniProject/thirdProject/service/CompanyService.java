@@ -54,4 +54,22 @@ public class CompanyService {
         companyRepository.deleteCompany(name);
         return ResponceCompanyDTO.requestTrue(null,"Department deleted successfully");
     }
+
+    public ResponceCompanyDTO<?> transferDepartmentToOtherCompany(String departmentName,String companyName) {
+        Department department = departmentRepository.findByName(departmentName);
+        if (department == null) {
+            return ResponceCompanyDTO.requestFalse(null,"Department not found");
+        }
+        Company newCompany = companyRepository.findByName(companyName);
+        if (newCompany == null) {
+            return ResponceCompanyDTO.requestFalse(null,"Company not found");
+        }
+        Company oldCompany = companyRepository.findAll().stream().filter(company -> company.getDepartments().contains(department)).findFirst().orElse(null);
+
+        if (oldCompany != null) {
+            oldCompany.getDepartments().remove(department);
+        }
+        newCompany.addDepartment(department);
+        return ResponceCompanyDTO.requestTrue(null,"Department transferred successfully");
+    }
 }
