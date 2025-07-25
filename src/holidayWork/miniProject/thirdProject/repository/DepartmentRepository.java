@@ -13,15 +13,15 @@ public class DepartmentRepository {
     private final Map<String, Department> departments = new HashMap<String, Department>();
 
     public void save(Department department) {
-        departments.put(department.getDepartmentName(), department);
+        departments.put(department.getId(), department);
     }
 
     public Department findByName(String name) {
         return departments.get(name);
     }
 
-    public boolean exists(String name) {
-        return departments.containsKey(name);
+    public boolean exists(String id) {
+        return departments.containsKey(id);
     }
 
     public List<Department> findAll() {

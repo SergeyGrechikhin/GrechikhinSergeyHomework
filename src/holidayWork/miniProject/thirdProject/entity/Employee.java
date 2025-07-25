@@ -4,9 +4,11 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String id;
+    private String position;
 
-    public Employee(String firstName, String id, String lastName) {
+    public Employee(String firstName, String position, String id, String lastName) {
         this.firstName = firstName;
+        this.position = position;
         this.id = id;
         this.lastName = lastName;
     }
@@ -27,8 +29,12 @@ public class Employee {
         return firstName + " " + lastName;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
     @Override
     public String toString() {
-        return "Employee : " + firstName + " " + lastName + " ID " + id ;
+        return "Employee : " + firstName + " " + lastName + " ID : " + id + " Position : " + position;
     }
 }

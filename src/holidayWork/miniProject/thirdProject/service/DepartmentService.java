@@ -14,6 +14,7 @@ import holidayWork.miniProject.thirdProject.repository.EmployeeRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DepartmentService {
     private final DepartmentRepository departmentRepository;
@@ -24,11 +25,11 @@ public class DepartmentService {
         this.employeeRepository = employeeRepository;
     }
 
-    public ResponceCompanyDTO<Department> createDepartment(String name) {
-        if (departmentRepository.exists(name)) {
-            return ResponceCompanyDTO.requestFalse(null,"Department already exists") ;
+    public ResponceCompanyDTO<Department> createDepartment(String name,String id) {
+        if (departmentRepository.exists(id)) {
+            return ResponceCompanyDTO.requestFalse(null,"Department with this id already exists") ;
         }
-        Department department = new Department(name);
+        Department department = new Department(name,id);
         departmentRepository.save(department);
         return ResponceCompanyDTO.requestTrue(null,"Department created successfully");
     }
@@ -74,6 +75,14 @@ public class DepartmentService {
         }
         newDepartment.addEmployee(employee);
         return ResponceCompanyDTO.requestTrue(null,"Department transferred successfully");
+    }
+
+    public ResponceCompanyDTO findDepartmentByName(String name) {
+       List<Department> departments = departmentRepository.findAll().stream().filter(department -> department.getDepartmentName().equalsIgnoreCase(name)).collect(Collectors.toList());
+       if (departments.isEmpty()) {
+           return ResponceCompanyDTO.requestFalse(null,"Department not found");
+       }
+       return ResponceCompanyDTO.requestTrue(departments,"Department found successfully");
     }
 
 

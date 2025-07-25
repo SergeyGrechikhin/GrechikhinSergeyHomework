@@ -19,11 +19,11 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public ResponceCompanyDTO<Employee> create(String firstName, String lastName, String id) {
+    public ResponceCompanyDTO<Employee> create(String firstName, String lastName, String id, String status) {
         if (employeeRepository.existsById(id)) {
             return ResponceCompanyDTO.requestFalse(null,"Employee with this id already exists");
         }
-        Employee employee = new Employee(firstName, id, lastName);
+        Employee employee = new Employee(firstName ,status,id,lastName);
         employeeRepository.save(employee);
         return ResponceCompanyDTO.requestTrue(employee,"Employee successfully created");
     }
@@ -42,6 +42,14 @@ public class EmployeeService {
 
     public ResponceCompanyDTO findByLastName(String lastName){
         List<Employee> list = employeeRepository.findAll().stream().filter(c -> c.getLastName().equalsIgnoreCase(lastName)).collect(Collectors.toList());
+        if(list.isEmpty()){
+            return ResponceCompanyDTO.requestFalse(null,"Employees not found") ;
+        }
+        return  ResponceCompanyDTO.requestTrue(list,"Employee successfully found");
+    }
+
+    public ResponceCompanyDTO findByPosition(String position){
+        List<Employee> list = employeeRepository.findAll().stream().filter(c -> c.getPosition().equalsIgnoreCase(position)).collect(Collectors.toList());
         if(list.isEmpty()){
             return ResponceCompanyDTO.requestFalse(null,"Employees not found") ;
         }

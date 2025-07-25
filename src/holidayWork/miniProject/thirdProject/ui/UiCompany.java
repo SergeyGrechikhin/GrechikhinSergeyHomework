@@ -2,6 +2,7 @@ package holidayWork.miniProject.thirdProject.ui;
 
 import holidayWork.miniProject.firstProject.entity.Gruppe;
 import holidayWork.miniProject.firstProject.entity.Student;
+import holidayWork.miniProject.secondProject.dto.ResponceCarDTO;
 import holidayWork.miniProject.thirdProject.dto.ResponceCompanyDTO;
 import holidayWork.miniProject.thirdProject.entity.Company;
 import holidayWork.miniProject.thirdProject.entity.Department;
@@ -13,6 +14,7 @@ import holidayWork.miniProject.thirdProject.service.EmployeeService;
 import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class UiCompany {
 
@@ -34,14 +36,18 @@ public class UiCompany {
         String lastName = scanner.nextLine();
         System.out.println("Enter your id :");
         String id = scanner.nextLine();
-        ResponceCompanyDTO<?> responce = employeeService.create(name,lastName,id);
+        System.out.println("Enter status for employee : ");
+        String status = scanner.nextLine();
+        ResponceCompanyDTO<?> responce = employeeService.create(name, lastName, id, status);
         System.out.println(responce.getMessage());
     }
 
     private void createDepartment (){
-        System.out.println("Enter your Department name:");
+        System.out.println("Enter your Department name: ");
         String name = scanner.nextLine();
-        ResponceCompanyDTO<?> responce = departmentService.createDepartment(name);
+        System.out.println("Enter your Department id: ");
+        String id = scanner.nextLine();
+        ResponceCompanyDTO<?> responce = departmentService.createDepartment(name,id);
         System.out.println(responce.getMessage());
     }
 
@@ -153,6 +159,60 @@ public class UiCompany {
         System.out.println(responce.getMessage());
     }
 
+    private void searchEmployeeByFirstName (){
+        System.out.println("Enter Employee first name : ");
+        String firstName = scanner.nextLine();
+        printInfoResponse(employeeService.findByFirstName(firstName));
+
+    }
+
+    private void searchEmployeeByLastName (){
+        System.out.println("Enter Employee last name : ");
+        String lastName = scanner.nextLine();
+        printInfoResponse(employeeService.findByLastName(lastName));
+    }
+
+    private void searchEmployeeByPosition (){
+        System.out.println("Enter Employee company name : ");
+        String position = scanner.nextLine();
+        printInfoResponse(employeeService.findByPosition(position));
+    }
+
+    private void searchDepartmentbyName(){
+        System.out.println("Enter Department name : ");
+        String name = scanner.nextLine();
+        printInfoResponse(departmentService.findDepartmentByName(name));
+    }
+
+    private void printInfoResponse(ResponceCompanyDTO responce){
+        System.out.println(responce.getMessage());
+        if (responce.getData() != null){
+            System.out.println("Info");
+            System.out.println(responce.getData());
+        }
+    }
+
+    private void menuForAdvancedEmployeeSearch(){
+        while (true){
+            System.out.println("===*Advanced  Search*===");
+            System.out.println("1.Search Employee by first name");
+            System.out.println("2.Search Employee by last name");
+            System.out.println("3.Search Employee by position");
+            System.out.println("4.Search Department by name");
+            System.out.println("5.Back to main menu");
+            String choice = scanner.nextLine();
+            switch (choice){
+                case "1" -> searchEmployeeByFirstName();
+                case "2" -> searchEmployeeByLastName();
+                case "3" -> searchEmployeeByPosition();
+                case "4" -> searchDepartmentbyName();
+                case "5" -> menu();
+                default -> System.out.println("Invalid choice");
+            }
+
+        }
+    }
+
 
 
 
@@ -180,13 +240,15 @@ public class UiCompany {
             System.out.println("1.Search all Employee");
             System.out.println("2.Search all Department");
             System.out.println("3.Search all Company");
-            System.out.println("4.Back to Main Menu");
+            System.out.println("4.Advanced  Search");
+            System.out.println("5.Back to Main Menu");
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1" -> showEmployee();
                 case "2" -> showDepartment();
                 case "3" -> showCompany();
-                case "4" -> menu();
+                case "4" -> menuForAdvancedEmployeeSearch();
+                case "5" -> menu();
                 default -> System.out.println("Wrong choice");
             }
         }

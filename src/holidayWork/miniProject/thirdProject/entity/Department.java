@@ -9,10 +9,16 @@ public class Department {
 
     private String departmentName;
     private List<Employee> employees;
+    private String id;
 
-    public Department(String departmentName) {
+    public Department(String departmentName , String id) {
         this.departmentName = departmentName;
         this.employees = new ArrayList<>();
+        this.id = id ;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getDepartmentName() {
