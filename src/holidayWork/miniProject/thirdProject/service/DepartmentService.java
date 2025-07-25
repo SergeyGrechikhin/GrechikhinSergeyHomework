@@ -73,6 +73,8 @@ public class DepartmentService {
         if (oldDepartment != null) {
             oldDepartment.getEmployees().remove(employee);
         }
+        uniqueEmployeeId(employee,newDepartment);
+
         newDepartment.addEmployee(employee);
         return ResponceCompanyDTO.requestTrue(null,"Department transferred successfully");
     }
@@ -83,6 +85,26 @@ public class DepartmentService {
            return ResponceCompanyDTO.requestFalse(null,"Department not found");
        }
        return ResponceCompanyDTO.requestTrue(departments,"Department found successfully");
+    }
+
+    private void uniqueEmployeeId(Employee employee , Department department) {
+        List<Employee> employees = department.getEmployees();
+        String uniqueId = employee.getId();
+        String newId = uniqueId ;
+        int counter = 1 ;
+
+        boolean exists ;
+        do {
+            exists = false;
+            for (Employee employee1 : employees) {
+                if (employee1.getId().equals(newId)) {
+                    exists = true;
+                    newId = uniqueId + "-copy" + counter;
+                    counter++;
+                    break;
+                }
+            }
+        }while (exists);
     }
 
 
