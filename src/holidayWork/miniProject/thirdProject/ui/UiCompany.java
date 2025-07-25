@@ -38,7 +38,8 @@ public class UiCompany {
         String id = scanner.nextLine();
         System.out.println("Enter status for employee : ");
         String status = scanner.nextLine();
-        ResponceCompanyDTO<?> responce = employeeService.create(name, lastName, id, status);
+        double salary = readDouble("Enter salary for employee : ");
+        ResponceCompanyDTO<?> responce = employeeService.create(name, lastName, id, status,salary);
         System.out.println(responce.getMessage());
     }
 
@@ -184,6 +185,42 @@ public class UiCompany {
         printInfoResponse(departmentService.findDepartmentByName(name));
     }
 
+    private void updateFirstNameforEmployee(){
+        System.out.println("Enter id Employee for first name update : ");
+        String id = scanner.nextLine();
+        System.out.println("Enter new Employee first name : ");
+        String firstName = scanner.nextLine();
+        ResponceCompanyDTO responce = employeeService.updateFirstNameByEmployee(id,firstName);
+        System.out.println(responce.getMessage());
+
+    }
+
+    private void updateLastNameforEmployee(){
+        System.out.println("Enter id Employee for last name update : ");
+        String id = scanner.nextLine();
+        System.out.println("Enter new Employee last name : ");
+        String lastName = scanner.nextLine();
+        ResponceCompanyDTO responce = employeeService.updateLastNameByEmployee(id,lastName);
+        System.out.println(responce.getMessage());
+    }
+
+    private void updatePositionforEmployee(){
+        System.out.println("Enter id Employee for position update : ");
+        String id = scanner.nextLine();
+        System.out.println("Enter new Employee position : ");
+        String position = scanner.nextLine();
+        ResponceCompanyDTO responce = employeeService.updatePositionByEmployee(id,position);
+        System.out.println(responce.getMessage());
+    }
+
+    private void updateSalaryforEmployee(){
+        System.out.println("Enter id Employee for salary update : ");
+        String id = scanner.nextLine();
+        double newSalary = readDouble("Enter new salary : ");
+        ResponceCompanyDTO responce = employeeService.updateSalaryByEmployee(id,newSalary);
+        System.out.println(responce.getMessage());
+    }
+
     private void printInfoResponse(ResponceCompanyDTO responce){
         System.out.println(responce.getMessage());
         if (responce.getData() != null){
@@ -192,7 +229,41 @@ public class UiCompany {
         }
     }
 
-    private void menuForAdvancedEmployeeSearch(){
+    private void advancedUpdateMenuForEmployee(){
+        System.out.println("===*Advanced Update*===");
+        System.out.println("1.Update Employee first name");
+        System.out.println("2.Update Employee last name");
+        System.out.println("3.Update Employee position");
+        System.out.println("4.Update Employee salary");
+        System.out.println("5.Back to main menu");
+        String choise = scanner.nextLine();
+        switch (choise) {
+            case "1" -> updateFirstNameforEmployee();
+            case "2" -> updateLastNameforEmployee();
+            case "3" -> updatePositionforEmployee();
+            case "4" -> updateSalaryforEmployee();
+            case "5" -> menu();
+            default -> System.out.println("Wrong choise.");
+
+        }
+
+    }
+
+    private void updateMenu(){
+        while (true) {
+            System.out.println("===*Update Menu*===");
+            System.out.println("1.Employee update");
+            System.out.println("2.Back to main menu");
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "1" -> advancedUpdateMenuForEmployee();
+                case "2" -> menu();
+                default -> System.out.println("Wrong choise.");
+            }
+        }
+    }
+
+    private void menuForAdvancedSearch(){
         while (true){
             System.out.println("===*Advanced  Search*===");
             System.out.println("1.Search Employee by first name");
@@ -247,7 +318,7 @@ public class UiCompany {
                 case "1" -> showEmployee();
                 case "2" -> showDepartment();
                 case "3" -> showCompany();
-                case "4" -> menuForAdvancedEmployeeSearch();
+                case "4" -> menuForAdvancedSearch();
                 case "5" -> menu();
                 default -> System.out.println("Wrong choice");
             }
@@ -299,6 +370,7 @@ public class UiCompany {
             System.out.println("2.Search Menu");
             System.out.println("3.Transfer Menu");
             System.out.println("4.Delete menu");
+            System.out.println("5.Update Menu");
             System.out.println("0.Выход");
             String choice = scanner.nextLine();
             switch (choice) {
@@ -306,6 +378,7 @@ public class UiCompany {
                 case "2" -> menuForSearch();
                 case "3" -> menuForTransfer();
                 case "4" -> menuDeletePersonal();
+                case "5" -> updateFirstNameforEmployee();
                 case "0" ->{
                     System.out.println("Exit");
                     return;
@@ -314,6 +387,30 @@ public class UiCompany {
 
             }
 
+        }
+    }
+
+    private int readInt(String prompt){
+        while (true){
+            System.out.println(prompt);
+            String input = scanner.nextLine();
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e){
+                System.out.println("Invalid input . Enter only integer");
+            }
+        }
+    }
+
+    private double readDouble(String prompt){
+        while (true){
+            System.out.println(prompt);
+            String input = scanner.nextLine();
+            try {
+                return Double.parseDouble(input);
+            } catch (NumberFormatException e){
+                System.out.println("Invalid input . Enter only double");
+            }
         }
     }
 

@@ -5,12 +5,34 @@ public class Employee {
     private String lastName;
     private String id;
     private String position;
+    private double salary;
 
-    public Employee(String firstName, String position, String id, String lastName) {
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public Employee(String firstName, String position, String id, String lastName, double salary) {
         this.firstName = firstName;
         this.position = position;
         this.id = id;
         this.lastName = lastName;
+        this.salary = salary;
     }
 
     public String getFirstName() {

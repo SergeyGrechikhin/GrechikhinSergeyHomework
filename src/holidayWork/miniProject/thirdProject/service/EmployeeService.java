@@ -19,11 +19,11 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public ResponceCompanyDTO<Employee> create(String firstName, String lastName, String id, String status) {
+    public ResponceCompanyDTO<Employee> create(String firstName, String lastName, String id, String status,double salary) {
         if (employeeRepository.existsById(id)) {
             return ResponceCompanyDTO.requestFalse(null,"Employee with this id already exists");
         }
-        Employee employee = new Employee(firstName ,status,id,lastName);
+        Employee employee = new Employee(firstName ,status,id,lastName,salary);
         employeeRepository.save(employee);
         return ResponceCompanyDTO.requestTrue(employee,"Employee successfully created");
     }
@@ -62,5 +62,41 @@ public class EmployeeService {
         }
         employeeRepository.deleteEmployee(id);
         return  ResponceCompanyDTO.requestTrue(id,"Employee successfully deleted");
+    }
+
+    public ResponceCompanyDTO updateFirstNameByEmployee(String id , String newFirstName){
+        Employee employee = employeeRepository.findById(id);
+        if(employee == null){
+            return ResponceCompanyDTO.requestFalse(null,"Employee with this id does not exist");
+        }
+        employee.setFirstName(newFirstName);
+        return ResponceCompanyDTO.requestTrue(employee,"Employee first name successfully updated");
+    }
+
+    public ResponceCompanyDTO updateLastNameByEmployee(String id , String newLastName){
+        Employee employee = employeeRepository.findById(id);
+        if(employee == null){
+            return ResponceCompanyDTO.requestFalse(null,"Employee with this id does not exist");
+        }
+        employee.setLastName(newLastName);
+        return ResponceCompanyDTO.requestTrue(employee,"Employee last name successfully updated");
+    }
+
+    public ResponceCompanyDTO updatePositionByEmployee(String id , String newPosition){
+        Employee employee = employeeRepository.findById(id);
+        if(employee == null){
+            return ResponceCompanyDTO.requestFalse(null,"Employee with this id does not exist");
+        }
+        employee.setPosition(newPosition);
+        return ResponceCompanyDTO.requestTrue(employee,"Employee position successfully updated");
+    }
+
+    public ResponceCompanyDTO updateSalaryByEmployee(String id , double newSalary){
+        Employee employee = employeeRepository.findById(id);
+        if(employee == null){
+            return ResponceCompanyDTO.requestFalse(null,"Employee with this id does not exist");
+        }
+        employee.setSalary(newSalary);
+        return ResponceCompanyDTO.requestTrue(employee,"Employee salary successfully updated");
     }
 }
