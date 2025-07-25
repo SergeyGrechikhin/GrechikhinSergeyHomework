@@ -258,6 +258,7 @@ public class UiCompany {
             switch (choice) {
                 case "1" -> advancedUpdateMenuForEmployee();
                 case "2" -> menu();
+
                 default -> System.out.println("Wrong choise.");
             }
         }
@@ -378,7 +379,7 @@ public class UiCompany {
                 case "2" -> menuForSearch();
                 case "3" -> menuForTransfer();
                 case "4" -> menuDeletePersonal();
-                case "5" -> updateFirstNameforEmployee();
+                case "5" -> updateMenu();
                 case "0" ->{
                     System.out.println("Exit");
                     return;
