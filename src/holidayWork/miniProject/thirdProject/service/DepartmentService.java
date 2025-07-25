@@ -18,14 +18,21 @@ import java.util.stream.Collectors;
 
 public class DepartmentService {
     private final DepartmentRepository departmentRepository;
-    private final EmployeeRepository employeeRepository;
 
-    public DepartmentService(DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
+    private final EmployeeService employeeService;
+
+    public DepartmentService(DepartmentRepository departmentRepository,  EmployeeService employeeService) {
         this.departmentRepository = departmentRepository;
-        this.employeeRepository = employeeRepository;
+        this.employeeService = employeeService;
     }
 
-    public ResponceCompanyDTO<Department> createDepartment(String name,String id) {
+
+
+    public Department funcByTransferId(String id) {
+        return departmentRepository.findAll().stream().filter(department -> department.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    public ResponceCompanyDTO<Department> createDepartment(String name, String id) {
         if (departmentRepository.exists(id)) {
             return ResponceCompanyDTO.requestFalse(null,"Department with this id already exists") ;
         }
@@ -34,16 +41,17 @@ public class DepartmentService {
         return ResponceCompanyDTO.requestTrue(null,"Department created successfully");
     }
 
-    public ResponceCompanyDTO<?> addEmployeeToDepartment(String studentId, String departmentName) {
-        Employee employee = employeeRepository.findById(studentId);
+    public ResponceCompanyDTO<?> addEmployeeToDepartment(String studentId, String id) {
+        Employee employee = employeeService.findById(studentId);
         if (employee == null) {
             return ResponceCompanyDTO.requestFalse(null,"Employee not found") ;
         }
-        Department department = departmentRepository.findByName(departmentName);
+        Department department = funcByTransferId(id);
         if (department == null) {
             return ResponceCompanyDTO.requestFalse(null,"Department not found");
         }
         department.addEmployee(employee);
+
         return  ResponceCompanyDTO.requestTrue(null,"Employee added successfully");
     }
     public List<Department> getAllDepartments() {
@@ -59,12 +67,12 @@ public class DepartmentService {
         return ResponceCompanyDTO.requestTrue(null,"Department deleted successfully");
     }
 
-    public ResponceCompanyDTO<?> transferEmployeeToOtherDepartment(String employeeId,String departmentName) {
-        Employee employee = employeeRepository.findById(employeeId);
+    public ResponceCompanyDTO<?> transferEmployeeToOtherDepartment(String employeeId,String id) {
+        Employee employee = employeeService.findById(employeeId);
         if (employee == null) {
             return ResponceCompanyDTO.requestFalse(null,"Employee not found");
         }
-        Department newDepartment = departmentRepository.findByName(departmentName);
+        Department newDepartment = funcByTransferId(id);
         if (newDepartment == null) {
             return ResponceCompanyDTO.requestFalse(null,"Department not found");
         }
@@ -76,6 +84,7 @@ public class DepartmentService {
         uniqueEmployeeId(employee,newDepartment);
 
         newDepartment.addEmployee(employee);
+
         return ResponceCompanyDTO.requestTrue(null,"Department transferred successfully");
     }
 
@@ -105,6 +114,10 @@ public class DepartmentService {
                 }
             }
         }while (exists);
+    }
+
+    public Department findById(String id) {
+        return departmentRepository.findById(id);
     }
 
 

@@ -15,8 +15,8 @@ public class CompanyApp {
         EmployeeRepository edr = new EmployeeRepository();
 
         EmployeeService employeeService = new EmployeeService(edr);
-        DepartmentService ds = new DepartmentService(dr,edr);
-        CompanyService cs = new CompanyService(cr,edr,dr);
+        DepartmentService ds = new DepartmentService(dr,employeeService);
+        CompanyService cs = new CompanyService(cr,ds);
 
         UiCompany ui = new UiCompany(cs,ds,employeeService);
         ui.menu();

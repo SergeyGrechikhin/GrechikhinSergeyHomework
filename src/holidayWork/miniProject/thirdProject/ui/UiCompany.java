@@ -61,19 +61,19 @@ public class UiCompany {
 
     private void employeeToDepartment (){
         System.out.println("Enter your  Employee id :");
-        String id = scanner.nextLine();
-        System.out.println("Enter your  Department name :");
-        String name = scanner.nextLine();
-        ResponceCompanyDTO<?> responce = departmentService.addEmployeeToDepartment(id,name);
+        String empId = scanner.nextLine();
+        System.out.println("Enter your  Department id :");
+        String depId = scanner.nextLine();
+        ResponceCompanyDTO<?> responce = departmentService.addEmployeeToDepartment(empId,depId);
         System.out.println(responce.getMessage());
     }
 
     private void departmentToCompany (){
-        System.out.println("Enter your Department Name : ");
-        String name = scanner.nextLine();
+        System.out.println("Enter your Department id : ");
+        String depId = scanner.nextLine();
         System.out.println("Enter your Company Name : ");
         String companyName = scanner.nextLine();
-        ResponceCompanyDTO<?> responce = companyService.addDepartmentToCompany(name,companyName);
+        ResponceCompanyDTO<?> responce = companyService.addDepartmentToCompany(depId,companyName);
         System.out.println(responce.getMessage());
     }
 
@@ -143,20 +143,20 @@ public class UiCompany {
     }
 
     private void transferDepartmentForNewCompany(){
-        System.out.println("Enter Department name for new company : ");
-        String name = scanner.nextLine();
+        System.out.println("Enter Department id for new company : ");
+        String depName = scanner.nextLine();
         System.out.println("Enter new company name : ");
         String companyName = scanner.nextLine();
-        ResponceCompanyDTO responce = companyService.transferDepartmentToOtherCompany(name,companyName);
+        ResponceCompanyDTO responce = companyService.transferDepartmentToOtherCompany(depName,companyName);
         System.out.println(responce.getMessage());
     }
 
     private void transferEmployeeForNewDepartment(){
         System.out.println("Enter Employee id for new Department : ");
-        String id = scanner.nextLine();
-        System.out.println("Enter new Department name : ");
-        String name = scanner.nextLine();
-        ResponceCompanyDTO responce = departmentService.transferEmployeeToOtherDepartment(id,name);
+        String empId = scanner.nextLine();
+        System.out.println("Enter new Department id : ");
+        String depId = scanner.nextLine();
+        ResponceCompanyDTO responce = departmentService.transferEmployeeToOtherDepartment(empId,depId);
         System.out.println(responce.getMessage());
     }
 

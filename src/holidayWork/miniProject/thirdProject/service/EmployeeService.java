@@ -32,6 +32,10 @@ public class EmployeeService {
         return new ArrayList<>(employeeRepository.findAll());
     }
 
+    public Employee findById(String id) {
+        return employeeRepository.findById(id);
+    }
+
     public ResponceCompanyDTO findByFirstName(String firstName){
         List<Employee> list = employeeRepository.findAll().stream().filter(c -> c.getFirstName().equalsIgnoreCase(firstName)).collect(Collectors.toList());
         if(list.isEmpty()){

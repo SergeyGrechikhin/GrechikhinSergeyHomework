@@ -20,6 +20,10 @@ public class DepartmentRepository {
         return departments.get(name);
     }
 
+    public Department findById(String id) {
+        return departments.get(id);
+    }
+
     public boolean exists(String id) {
         return departments.containsKey(id);
     }

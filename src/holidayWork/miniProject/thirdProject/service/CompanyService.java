@@ -12,14 +12,20 @@ import java.util.List;
 
 public class CompanyService {
  private final   CompanyRepository companyRepository ;
-  private final  DepartmentRepository departmentRepository;
-   private final EmployeeRepository employeeRepository ;
+
+  private final DepartmentService departmentService;
 
 
-    public CompanyService(CompanyRepository companyRepository, EmployeeRepository employeeRepository, DepartmentRepository departmentRepository) {
+
+    public CompanyService(CompanyRepository companyRepository, DepartmentService departmentService) {
         this.companyRepository = companyRepository;
-        this.employeeRepository = employeeRepository;
-        this.departmentRepository = departmentRepository;
+
+        this.departmentService = departmentService;
+
+    }
+
+    public Company findbyNameforTransfer(String nameCompany){
+        return companyRepository.findAll().stream().filter(company -> company.getCompanyName().equalsIgnoreCase(nameCompany)).findFirst().orElse(null);
     }
 
     public ResponceCompanyDTO<Company> createCompany(String name) {
@@ -31,18 +37,21 @@ public class CompanyService {
         return ResponceCompanyDTO.requestTrue(null,"Company created successfully");
     }
 
-    public ResponceCompanyDTO<?> addDepartmentToCompany(String departmentName, String companyName) {
-        Department department = departmentRepository.findByName(departmentName);
+    public ResponceCompanyDTO<?> addDepartmentToCompany(String id, String companyName) {
+        Department department = departmentService.findById(id);
         if (department == null) {
             return ResponceCompanyDTO.requestFalse(null,"Department not found") ;
         }
-        Company company = companyRepository.findByName(companyName);
+        Company company = findbyNameforTransfer(companyName);
         if (company == null) {
             return ResponceCompanyDTO.requestFalse(null,"Company not found");
         }
         company.addDepartment(department);
+
         return  ResponceCompanyDTO.requestTrue(null,"Department added successfully");
     }
+
+
     public List<Company> getAllCompany() {
         return companyRepository.findAll();
     }
@@ -55,12 +64,12 @@ public class CompanyService {
         return ResponceCompanyDTO.requestTrue(null,"Department deleted successfully");
     }
 
-    public ResponceCompanyDTO<?> transferDepartmentToOtherCompany(String departmentName,String companyName) {
-        Department department = departmentRepository.findByName(departmentName);
+    public ResponceCompanyDTO<?> transferDepartmentToOtherCompany(String id,String companyName) {
+        Department department = departmentService.findById(id);
         if (department == null) {
             return ResponceCompanyDTO.requestFalse(null,"Department not found");
         }
-        Company newCompany = companyRepository.findByName(companyName);
+        Company newCompany = findbyNameforTransfer(companyName);
         if (newCompany == null) {
             return ResponceCompanyDTO.requestFalse(null,"Company not found");
         }
@@ -70,6 +79,7 @@ public class CompanyService {
             oldCompany.getDepartments().remove(department);
         }
         newCompany.addDepartment(department);
+
         return ResponceCompanyDTO.requestTrue(null,"Department transferred successfully");
     }
 }
