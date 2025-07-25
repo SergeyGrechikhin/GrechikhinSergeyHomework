@@ -7,6 +7,8 @@ public class Employee {
     private String position;
     private double salary;
 
+
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
