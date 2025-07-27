@@ -5,9 +5,9 @@ import holidayWork.miniProject.firstProject.dto.ResponseDTO;
 public class ResponceCompanyDTO <T>{
     private boolean success;
     private String message;
-    private Object data;
+    private T data;
 
-    public ResponceCompanyDTO(boolean success, Object data, String message) {
+    public ResponceCompanyDTO(boolean success, T data, String message) {
         this.success = success;
         this.data = data;
         this.message = message;
