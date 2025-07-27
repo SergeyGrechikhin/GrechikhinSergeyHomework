@@ -129,9 +129,9 @@ public class UiCompany {
     }
 
     private void deleteDepartment () {
-        System.out.println("Enter Department name for delete : ");
-        String name = scanner.nextLine();
-        ResponceCompanyDTO responce = departmentService.deleteDepartment(name);
+        System.out.println("Enter Department id for delete : ");
+        String id = scanner.nextLine();
+        ResponceCompanyDTO responce = departmentService.deleteDepartment(id);
         System.out.println(responce.getMessage());
     }
 
@@ -382,7 +382,7 @@ public class UiCompany {
                 case "5" -> updateMenu();
                 case "0" ->{
                     System.out.println("Exit");
-                    return;
+                   System.exit(0);
                 }
                 default -> System.out.println("Invalid choice");
 

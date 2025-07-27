@@ -30,7 +30,7 @@ public class UI {
                 case "5" -> menuForUpdate();
                 case "0" -> {
                     System.out.println("Exit");
-                    return;
+                    System.exit(0);
                 }
                 default -> System.out.println("Invalid choice");
 
