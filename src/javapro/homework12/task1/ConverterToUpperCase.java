@@ -5,5 +5,6 @@ public class ConverterToUpperCase {
         ConverterInterfaceToUpperCase toUpperCase = s -> s.toUpperCase();
         String result = toUpperCase.convert("to upper case");
         System.out.println(result);
+
     }
 }
