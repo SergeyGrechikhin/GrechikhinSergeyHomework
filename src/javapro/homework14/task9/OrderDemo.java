@@ -20,6 +20,8 @@ public class OrderDemo {
         System.out.println("Заказы в июле : " + juliOrder);
 
         System.out.println("Количество заказов в июне : " + juniOrder.size());
+
+
         System.out.println("Количество заказов в июле : " + juliOrder.size());
 
 
