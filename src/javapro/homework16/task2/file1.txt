@@ -1,0 +1,2 @@
+Hi , it is Java
+Text for copy
