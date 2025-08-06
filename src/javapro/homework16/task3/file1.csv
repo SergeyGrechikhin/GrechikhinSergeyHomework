@@ -1,0 +1,8 @@
+Int,sum,1,2,3,4,5
+String,count,one,two,three,four,five
+Double,avg,11.11,22.22,33.33,44.44,55.55
+Int,mult,1,2,3,4,5
+Int,mult
+String,print,this,text,for,print
+Double,max,66.66,77.77,88.88,11.11,33.33
+Double,min,88.88,22.22,22.22,11.11,44.44

@@ -1,27 +1,42 @@
 package javapro.homework16.task3;
 
+import java.awt.image.DataBufferFloat;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.spi.NumberFormatProvider;
 
 public class CsvFile {
     public static void main(String[] args) {
-        String fileName = "src/javapro/homework16/task3/fileTable.csv" ;
-        int strings = 0;
+        CsvFileService csvFileService = new CsvFileService();
 
-        try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        String fileName = "src/javapro/homework16/task3/file1.csv" ;
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
+            int mylines = 0 ;
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                strings++;
+                if(line.length() == 0)
+                    continue;
+                String[] lineArray = line.split(",");
+                if(lineArray.length < 3)
+                    continue;
+                    mylines++;
+                    String type = lineArray[0];
+                    switch (type){
+                        case "Int" -> csvFileService.integers(lineArray);
+                        case "Double" -> csvFileService.doubles(lineArray);
+                        case "String" -> csvFileService.strings(lineArray);
+                        default ->  System.out.println("Invalid choice");
+                    }
+
             }
-            System.out.println("Strings : " + strings);
         }catch (Exception e){
-            System.out.println("Error" + e.getMessage());
+            System.out.println("Error");
         }
 
 
 
 
+
     }
+
 }
