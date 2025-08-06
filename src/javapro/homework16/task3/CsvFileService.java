@@ -48,13 +48,9 @@ public class CsvFileService {
         System.out.println(Arrays.toString(lines));
         switch (operation){
             case "count" -> System.out.println("Quantity words : " + words.length );
-            case "print" -> {
-                System.out.println("Print String : "  );
-                for (int i = 0; i < words.length; i++) {
-                    System.out.println(  words[i]);
+            case "print" -> System.out.println("Print String : " + String.join(", ", words) );
 
-                }
-            }
+
 
             default -> System.out.println("Invalid operation");
         }
