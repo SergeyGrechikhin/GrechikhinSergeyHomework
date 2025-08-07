@@ -3,19 +3,28 @@ package javapro.homework16.task4;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class CopyPng {
     public static void main(String[] args) throws IOException {
-        copyExample ("C:\\Users\\GBT H510M_NVDA\\IdeaProjects\\GrechikhinSergeyHomework\\src\\javapro\\homework16\\task4\\file1.png", "C:\\Users\\GBT H510M_NVDA\\IdeaProjects\\GrechikhinSergeyHomework\\src\\javapro\\homework16\\task4\\file2.png");
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the your Source file name ");
+        String filename = input.nextLine();
+        System.out.println("Enter the your Target file name ");
+        String filename2 = input.nextLine();
+
+
+        copyExample (filename, filename2);
 
     }
     private static void copyExample(String fileSource, String fileTarget) throws IOException {
 
-     //   String path = "src/javapro/homework16/task4";
+       String path = "src/javapro/homework16/task4/files/";
 
 
-        FileOutputStream outputStream = new FileOutputStream( fileTarget);
-        FileInputStream inputStream = new FileInputStream( fileSource);
+        FileOutputStream outputStream = new FileOutputStream( path + fileTarget);
+        FileInputStream inputStream = new FileInputStream( path + fileSource);
 
         int readByte;
 
