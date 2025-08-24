@@ -9,7 +9,7 @@ public class Cinema {
         CyclicBarrier barrier = new CyclicBarrier(friends, () ->
                 System.out.println("Все здесь . Идем смотреть фильм"));
 
-        for (int i = 0; i < friends; i++) {
+        for (int i = 1; i <= friends; i++) {
             int id = i ;
             Thread t = new Thread(() -> {
                 try {
